@@ -5,20 +5,21 @@ class AthletePolicy < ApplicationPolicy
       scope.all
     end
 
-    def new?
-      true
-    end
+  end
+  
+  def new?
+    true
+  end
 
-    def show?
-      true
-    end
+  def show?
+    true
+  end
 
-    def edit?
-      record.user == user
-    end
+  def edit?
+    record.user == user
+  end
 
-    def update?
-      record.user == user
-    end
+  def update?
+    record.user == user
   end
 end
