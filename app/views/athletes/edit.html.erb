@@ -2,15 +2,12 @@
   <h1>Edit your athlete</h1>
 
   <%= simple_form_for(@athlete) do |f| %>
-    <%= f.input :first_name %>
-    <%= f.input :last_name %>
     <%= f.input :price_per_day %>
     <%= f.input :age %>
     <%= f.input :location %>
     <%= f.input :summary %>
     <%= f.input :features %>
     <%= f.input :sport %>
-    <%= f.input :photo, as: :file %>
     <%= f.submit %>
   <% end %>
 </div>
