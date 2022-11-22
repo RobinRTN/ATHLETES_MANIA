@@ -18,6 +18,11 @@ class AthletesController < ApplicationController
     @athlete = Athlete.new(athlete_params)
     @athlete.user = current_user
     @athlete.save
+    if @athlete.save
+      redirect_to athlete_path(@athlete)
+    else
+      render :new, status: :unprocessable_entity
+    end
     authorize @athlete
   end
 
@@ -35,7 +40,7 @@ class AthletesController < ApplicationController
   private
 
   def athlete_params
-    params.require(:athlete).permit(:first_name, :last_name, :price_per_day, :age, :location, :summary, :features, :sport)
+    params.require(:athlete).permit(:first_name, :last_name, :price_per_day, :age, :location, :summary, :features, :sport, :photo)
   end
 
   def set_athlete
