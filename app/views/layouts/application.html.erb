@@ -5,12 +5,57 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <link rel="stylesheet" type="text/css" href="_index.css" media=”screen” />
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
   <body>
+    <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
+      <div class="container-fluid">
+        <%= link_to "#", class: "navbar-brand" do %>
+          <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
+        <% end %>
+        <form class="form-home" action="/search" method="get" role="search">
+          <input class="" type="search" name="q" value="" autocomplete="off" data-search-box="" role="combobox" placeholder="Recherche" aria-expanded="false" aria-autocomplete="list" aria-label="When autocomplete results are available use up and down arrows to review and enter to select" aria-owns="boost-pfs-search-suggestion-0" data-already-init="true">
+          <button type="submit" class="btn-home" aria-label="Submit"><i class="fas fa-magnifying-glass"></i></button>
+        </form>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav me-auto">
+            <%# if user_signed_in? %>
+              <li class="nav-item active">
+                <%= link_to "Home", "#", class: "nav-link" %>
+              </li>
+              <li class="nav-item">
+                <%= link_to "Messages", "#", class: "nav-link" %>
+              </li>
+              <li class="nav-item dropdown">
+                <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+                <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                  <%= link_to "Account", "#", class: "dropdown-item" %>
+                  <%= link_to "Your bookings", "#", class: "dropdown-item" %>
+                  <%= link_to "Log out", "#", class: "dropdown-item", data: {turbo_method: :delete} %>
+                </div>
+              </li>
+            <%# else %>
+              <!--li class="nav-item"-->
+                <%#= link_to "Login", new_user_session_path, class: "nav-link" %>
+              <!--/li-->
+            <%# end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+
     <%= yield %>
+    <div class="container-fluid">
+        <div class="footer-links">
+          <a href="#"><i class="fab fa-instagram link-style"></i></a>
+          <a href="#"><i class="fab fa-facebook link-style"></i></a>
+          <a href="#"><i class="fab fa-twitter link-style"></i></a>
+          <a href="#"><i class="fab fa-linkedin link-style"></i></a>
+      </div>
+    </div>
   </body>
 </html>
