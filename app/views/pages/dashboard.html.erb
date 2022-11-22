@@ -1,0 +1,23 @@
+<h1> <%= @user.first_name %>'s DASHBOARD </h1>
+<h2>Your bookings:</h2>
+<ul>
+  <% @bookings.each do |booking| %>
+  <li>Status: <%= booking.status %></li>
+  <li>Athlete: <%= Athlete.find(booking.athlete.id).first_name %> <%= Athlete.find(booking.athlete.id).last_name %></li>
+  <li>Booking price: <%= booking.price %></li>
+  <li>Start date: <%= booking.start_date %></li>
+  <li>End date: <%= booking.end_date %></li>
+  <% end %>
+</ul>
+
+<h2>Your athletes:</h2>
+<ul>
+  <% @athletes.each do |athlete| %>
+  <li><%= athlete.first_name %></li>
+  <li><%= athlete.last_name %></li>
+  <li><%= athlete.price_per_day %></li>
+  <li><%= athlete.sport %></li>
+  <li><%= athlete.age %></li>
+  <li><%= athlete.location %></li>
+  <% end %>
+</ul>
