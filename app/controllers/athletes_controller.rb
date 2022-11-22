@@ -18,6 +18,11 @@ class AthletesController < ApplicationController
     @athlete = Athlete.new(athlete_params)
     @athlete.user = current_user
     @athlete.save
+    if @athlete.save
+      redirect_to athlete_path(@athlete)
+    else
+      render :new, status: :unprocessable_entity
+    end
     authorize @athlete
   end
 
