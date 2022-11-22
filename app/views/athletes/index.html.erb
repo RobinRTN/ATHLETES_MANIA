@@ -1,9 +1,16 @@
 <div class="container mt-3">
-  <h1>Our athletes</h1>
-  <%= @athletes.all %>
+  <h1>Athletes</h1>
   <ul>
     <% @athletes.each do |athlete| %>
-      <li><%= athlete %></li>
+    <div class='card-list col-3' style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(
+      <% if athlete.photo.attached? %>
+        <%= cl_image_path athlete.photo.key, height: 300, crop: :fill %>
+      <% else %>
+        'https://img.freepik.com/photos-gratuite/outils-sport_53876-138077.jpg?w=2000'
+      <% end%>
+      )">
+      <li><%= link_to athlete.first_name, athlete_path(athlete) %></li>
+    </div>
     <% end %>
   </ul>
 </div>
