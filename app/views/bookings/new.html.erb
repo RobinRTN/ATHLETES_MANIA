@@ -1,10 +1,10 @@
 <h2> Record a new booking </h2>
 
-<%= simple_form_for[@booking, @athlete] do |f| %>
+<%= simple_form_for[@booking, @athlete], html: { data: { controller: 'flatpickr' } } do |f| %>
   <%= f.association :athlete %>
-  <%= f.input :start_date %>
-  <%= f.input :end_date %>
-  <%= f.submit %>
+  <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: 'startDateInput',} } %>
+  <%= f.input :end_date, as: :string, input_html: { class: 'd-none', data: { flatpickr_target: 'endDateInput',} } %>
+  <%= f.submit 'Book now', class: 'btn btn-danger' %>
 <% end %>
 
 
