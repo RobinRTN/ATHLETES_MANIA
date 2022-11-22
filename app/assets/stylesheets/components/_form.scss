@@ -1,3 +1,18 @@
 .form-home {
   box-sizing:border-box;
+  // position: absolute;
+  // justify-content: space-around;
+}
+
+.form-input {
+  position: relative;
+  border: 1px solid #ebebeb;
+  font-weight: lighter;
+  border-bottom-left-radius: 100px;
+  border-top-left-radius: 100px;
+}
+
+.form-btn {
+  position: relative;
+  left: 100px;
 }
