@@ -1,8 +1,14 @@
 <h2> Record a new booking </h2>
-
-<%= simple_form_for [@athlete, @booking], html: { data: { controller: 'flatpickr' } } do |f| %>
-  <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: 'startDateInput',} } %>
-  <%= f.input :end_date, as: :string, input_html: { class: 'd-none', data: { flatpickr_target: 'endDateInput',} } %>
-  <%=  %>
-  <%= f.submit 'Book now', class: 'btn btn-primary' %>
-<% end %>
+<div data-controller="dynamic-booking-price"
+     data-dynamic-booking-price-price-value="<%= @athlete.price_per_day %>">
+  <%= simple_form_for [@athlete, @booking], html: { data: { controller: 'flatpickr' } } do |f| %>
+    <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: 'startDateInput', dynamic_booking_price_target: 'startDateInput', action: 'change->dynamic-booking-price#updatePrice' } } %>
+    <%= f.input :end_date, as: :string, input_html: { data: { flatpickr_target: 'endDateInput', dynamic_booking_price_target: 'endDateInput', action: 'change->dynamic-booking-price#updatePrice'} } %>
+    <%= f.input :price, as: :hidden, input_html: { data: { dynamic_booking_price_target: 'total' } } %>
+    <%= f.input :duration, as: :hidden, input_html: { data: { dynamic_booking_price_target: 'duration' } } %>
+    <%= f.submit 'Book now', class: 'btn btn-primary' %>
+  <% end %>
+  <div class="booking-price">
+    Total price: <span data-dynamic-booking-price-target="priceHolder"><%= @athlete.price_per_day %></span> €
+  </div>
+</div>

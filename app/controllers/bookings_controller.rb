@@ -10,8 +10,10 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
+    @booking.athlete = @athlete
+    @booking.status = "pending"
     if @booking.save
-      redirect_to booking_path(@booking)
+      redirect_to athlete_path(@athlete)
     else
       render :new, status: :unprocessable_entity
     end
