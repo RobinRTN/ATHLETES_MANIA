@@ -4,6 +4,8 @@
 <%=@athlete.first_name%>
 <%=@athlete.last_name%>
 <%=@athlete.features%>
+<%= cl_image_tag @athlete.photo.key, height: 300, width: 400, crop: :fill %>
+
 
 
 <% if policy(@athlete).edit? %>
