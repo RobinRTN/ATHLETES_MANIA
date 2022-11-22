@@ -1,23 +1,40 @@
-<h1> <%= @user.first_name %>'s DASHBOARD </h1>
-<h2>Your bookings:</h2>
-<ul>
-  <% @bookings.each do |booking| %>
-  <li>Status: <%= booking.status %></li>
-  <li>Athlete: <%= Athlete.find(booking.athlete.id).first_name %> <%= Athlete.find(booking.athlete.id).last_name %></li>
-  <li>Booking price: <%= booking.price %></li>
-  <li>Start date: <%= booking.start_date %></li>
-  <li>End date: <%= booking.end_date %></li>
-  <% end %>
-</ul>
+<div class="container mt-3">
+  <h1> <%= @user.first_name %>'s DASHBOARD </h1>
+    <h2>Your bookings:</h2>
+      <ul>
+        <div class="row">
+          <div class="col-6 card-product">
+            <%= image_tag "logo.png", class: ""%>
+            <div class="athlete-infos">
+              <% @bookings.each do |booking| %>
+                <li>Status: <%= booking.status %></li>
+                <li>Athlete: <%= Athlete.find(booking.athlete.id).first_name %> <%= Athlete.find(booking.athlete.id).last_name %></li>
+                <li>Booking price: <%= booking.price %></li>
+                <div class="athlete-dates">
+                  <li>Start date: <%= booking.start_date %></li>
+                  <li>End date: <%= booking.end_date %></li>
+                </div>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </ul>
 
-<h2>Your athletes:</h2>
-<ul>
-  <% @athletes.each do |athlete| %>
-  <li><%= athlete.first_name %></li>
-  <li><%= athlete.last_name %></li>
-  <li><%= athlete.price_per_day %></li>
-  <li><%= athlete.sport %></li>
-  <li><%= athlete.age %></li>
-  <li><%= athlete.location %></li>
-  <% end %>
-</ul>
+    <h2>Your athletes:</h2>
+      <ul>
+        <div class="row">
+          <div class="col-6 card-product">
+            <%= image_tag "logo.png", class: ""%>
+            <div class="athlete-infos">
+              <% @athletes.each do |athlete| %>
+                <li>Full name <%= athlete.first_name %> <%= athlete.last_name %></li>
+                <li><%= athlete.sport %></li>
+                <li><%= athlete.price_per_day %></li>
+                <li><%= athlete.age %></li>
+                <li><%= athlete.location %></li>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </ul>
+</div>
