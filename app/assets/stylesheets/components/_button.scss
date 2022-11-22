@@ -1,3 +1,23 @@
+.btn-home {
+  margin: -7px;
+  height: 100%;
+  border: 1px solid #ebebeb;
+  font-weight: lighter;
+  border-top-right-radius: 100px;
+  border-bottom-right-radius: 100px;
+  transition-duration: 0.4s;
+  background: #29226c;
+  color: white;
+  min-width: 60px;
+  position: relative;
+  left:0cm;
+}
+
+.btn-home:hover {
+  background: #2A3990;
+  color: white;
+}
+
 .btn {
  margin-top: 20px;
 }
