@@ -11,4 +11,6 @@ class Athlete < ApplicationRecord
   validates :summary, presence: true
   validates :features, presence: true
   validates :sport, presence: true
+  # validates :availability, presence: true
+  validates :gender, presence: true, inclusion: { in: %w[male female], message: '%<value> is not a valid gender, has to be male or female' }
 end
