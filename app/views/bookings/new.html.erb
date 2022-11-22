@@ -1,23 +1,8 @@
 <h2> Record a new booking </h2>
 
-<%= simple_form_for[@booking, @athlete], html: { data: { controller: 'flatpickr' } } do |f| %>
-  <%= f.association :athlete %>
+<%= simple_form_for [@athlete, @booking], html: { data: { controller: 'flatpickr' } } do |f| %>
   <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: 'startDateInput',} } %>
   <%= f.input :end_date, as: :string, input_html: { class: 'd-none', data: { flatpickr_target: 'endDateInput',} } %>
-  <%= f.submit 'Book now', class: 'btn btn-danger' %>
+  <%=  %>
+  <%= f.submit 'Book now', class: 'btn btn-primary' %>
 <% end %>
-
-
-<%# create_table "bookings", force: :cascade do |t|
-    t.string "status"
-    t.date "start_date"
-    t.date "end_date"
-    t.integer "price"
-    t.integer "duration"
-    t.bigint "user_id", null: false
-    t.bigint "athlete_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["athlete_id"], name: "index_bookings_on_athlete_id"
-    t.index ["user_id"], name: "index_bookings_on_user_id"
-  end %>
