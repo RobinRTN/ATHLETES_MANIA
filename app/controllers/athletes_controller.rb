@@ -1,8 +1,8 @@
 class AthletesController < ApplicationController
-  before_action :set_bookmark, only: [:show, :edit, :update]
+  before_action :set_athlete, only: [:show, :edit, :update]
 
   def index
-    @athletes = Athlete.all
+    @athletes = policy_scope(Athlete)
   end
 
   def show
@@ -18,14 +18,16 @@ class AthletesController < ApplicationController
     @athlete = Athlete.new(athlete_params)
     @athlete.user = current_user
     @athlete.save
-    raise
     authorize @athlete
+  end
 
 
   def edit
+    authorize @athlete
   end
 
   def update
+    authorize @athlete
     @athlete.update(athlete_params)
     redirect_to athlete_path(@athlete)
   end
@@ -39,4 +41,5 @@ class AthletesController < ApplicationController
   def set_athlete
     @athlete = Athlete.find(params[:id])
   end
+
 end
