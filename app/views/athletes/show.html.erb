@@ -1,2 +1,11 @@
 <h1>Athletes#show</h1>
 <p>Find me in app/views/athletes/show.html.erb</p>
+
+<%=@athlete.first_name%>
+<%=@athlete.last_name%>
+<%=@athlete.features%>
+
+
+<% if policy(@athlete).edit? %>
+  <%= link_to "Edit this athlete", edit_athlete_path(@athlete) %> |
+<% end %>
