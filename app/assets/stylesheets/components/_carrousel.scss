@@ -1,0 +1,29 @@
+#carrousel {
+  width: 800px;
+  height: 400px;
+  box-shadow: 0 0 14px rgba(0,0,0,0.3);
+  margin: auto;
+}
+
+.carousel-item {
+  width: 800px;
+  height: 400px;
+}
+
+.carrousel {
+  background-size: cover;
+  background-position: center;
+  padding: 20px 0;
+  text-align: center;
+}
+
+.carrousel h2 {
+  margin: 0;
+  color: white;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
+  font-size: 32px;
+  padding-bottom: 10px;
+  text-align: start;
+  padding-bottom: 15px;
+  padding-top: 15px;
+}
