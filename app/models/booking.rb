@@ -3,7 +3,7 @@ class Booking < ApplicationRecord
   belongs_to :athlete
   has_many :reviews
 
-  validates :user_id, uniqueness: { scope: :athlete_id }
+  # validates :user_id, uniqueness: { scope: :athlete_id }
   validates :start_date, presence: true
   validates :end_date, presence: true
   validates :end_date, comparison: { greater_than: :start_date }
