@@ -5,7 +5,7 @@
       <% @athletes.each do |athlete| %>
         <%= link_to athlete_path(athlete) do %>
           <div class="card-product">
-            <div style="width: 360px; height: 300px; background-size: cover; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(
+            <div style="width: 360px; height: 300px; background-size: cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(
               <% if athlete.photo.attached? %>
                 <%= cl_image_path athlete.photo.key, crop: :fill %>
               <% else %>
@@ -14,11 +14,22 @@
               )">
             </div>
             <div class="card-product-infos">
-              <h1> <%= athlete.first_name %> <%= athlete.last_name %></h1>
+              <h3> <%= athlete.first_name %> <%= athlete.last_name %></h3>
               <li> Age: <%= athlete.age %></li>
               <li> Location: <%= athlete.location %></li>
               <li> <%= athlete.features %></li>
-              <li> <%= athlete.price_per_day %>€ per day</li>
+              <h2> <%= athlete.price_per_day %>€/day</h2>
+                <li class="average">
+                  <% mean = [] %>
+                  <% athlete.reviews.each do |review| %>
+                  <% mean << review.rating %>
+                  <% end %>
+                  <% unless mean.size == 0 %>
+                  <%= mean.sum / mean.size %> ⭐️
+                  <% else %>
+                  No review yet
+                  <% end %>
+                </li>
             </div>
           </div>
         <% end %>
