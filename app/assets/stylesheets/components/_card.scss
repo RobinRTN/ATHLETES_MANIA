@@ -1,8 +1,3 @@
-.row {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
 
 .card {
   display: flex;
@@ -26,6 +21,24 @@
 
 .card-body h5 li {
   font-size: 20px;
+}
+.card-body-dates {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.card-body li {
+  justify-content: space-between;
+  font-size: 12px;
+  opacity: .7;
+  margin: 0;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
 }
 
 .card-product {
@@ -53,18 +66,6 @@
   margin: 0;
 }
 
-.card-body-dates {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
-}
-
-.card-body li {
-  justify-content: space-between;
-  font-size: 12px;
-  opacity: .7;
-  margin: 0;
-}
 
 .card-product p {
   font-size: 12px;
@@ -76,4 +77,13 @@
 
 .card-product .card-product-infos {
   padding: 16px;
+}
+
+a {
+  text-decoration: none!important;
+  color: black!important;
+}
+
+li {
+  list-style: none;
 }
