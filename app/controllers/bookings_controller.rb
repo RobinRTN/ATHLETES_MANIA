@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
-  before_action :set_athlete, only: [:new, :create, :edit, :update]
+  before_action :set_athlete, only: [:new, :create]
+  before_action :set_athlete_edit, only: [:edit, :update]
 
   def new
     @booking = Booking.new
@@ -35,6 +36,10 @@ class BookingsController < ApplicationController
 private
 
   def set_athlete
+    @athlete = Athlete.find(params[:athlete_id])
+  end
+
+  def set_athlete_edit
     @athlete = Booking.find(params[:id]).athlete
   end
 
