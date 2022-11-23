@@ -6,12 +6,12 @@ class ReviewsController < ApplicationController
 
   def new
     @booking = Booking.find(params[:booking_id])
-    @athlete = @booking.athlete_id
+    @athlete = Athlete.find(@booking.athlete_id)
     @review = Review.new
     @review.booking = @booking
     authorize @review
 
-    @reviews = policy_scope(Review)
+    @review = policy_scope(Review)
     @athlete.reviews
   end
 
