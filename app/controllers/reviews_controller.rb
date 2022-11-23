@@ -1,5 +1,9 @@
 class ReviewsController < ApplicationController
 
+  def index
+    @review = policy_scope(Review)
+  end
+
   def new
     @review = Review.new
     authorize @review

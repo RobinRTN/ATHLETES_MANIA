@@ -12,12 +12,12 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.athlete = @athlete
     @booking.status = "pending"
-    if @booking.save
-      redirect_to athlete_path(@athlete)
-    else
-      render :new, status: :unprocessable_entity
-    end
     authorize @booking
+    if @booking.save
+      redirect_to athletes_path
+    else
+      render "athlete/:id", status: :unprocessable_entity
+    end
   end
 
   def edit

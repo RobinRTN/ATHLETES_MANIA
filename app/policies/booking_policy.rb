@@ -7,11 +7,11 @@ class BookingPolicy < ApplicationPolicy
   end
 
   def new?
-    true
+    create?
   end
 
   def create?
-    true
+    record.athlete.user != user
   end
 
   def edit?
