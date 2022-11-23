@@ -1,5 +1,6 @@
 class BookingsController < ApplicationController
-  before_action :set_athlete, only: [:new, :create, :edit, :update]
+  before_action :set_athlete, only: [:new, :create]
+  before_action :set_athlete_edit, only: [:edit, :update]
 
   def new
     @booking = Booking.new
@@ -21,10 +22,12 @@ class BookingsController < ApplicationController
   end
 
   def edit
+    @booking = Booking.find(params[:id])
     authorize @booking
   end
 
   def update
+    @booking = Booking.find(params[:id])
     @booking.update
     redirect_to dashboard_path(dashboard)
     authorize @booking
@@ -34,6 +37,10 @@ private
 
   def set_athlete
     @athlete = Athlete.find(params[:athlete_id])
+  end
+
+  def set_athlete_edit
+    @athlete = Booking.find(params[:id]).athlete
   end
 
   def booking_params
