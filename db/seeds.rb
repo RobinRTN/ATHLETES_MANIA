@@ -11,4 +11,16 @@ Athlete.destroy_all
 puts "Creating athletes..."
 Athlete.create!(first_name: "Karim", last_name: "Benzema", price_per_day: 1000, age: 35, location: "Algerie", summary: "xxx" , features: "DZ", sport: "Football", user_id: 1 )
 Athlete.create!(first_name: "Lebron", last_name: "James", price_per_day: 850, age: 37, location: "States", summary: "xxx" , features: "aaa", sport: "Basketball", user_id: 1 )
-puts "Finished!"
+puts "Athletes created!"
+
+puts "Cleaning users database..."
+User.destroy_all
+puts "Creating users..."
+User.create!(first_name: "", last_name: "", email: "", phone_number: "", password: "")
+puts "Users created!"
+
+puts "Cleaning bookings database..."
+Booking.destroy_all
+puts "Creating bookings..."
+Booking.create!(status: "", price: "", start_date: "", end_date: "", duration: "")
+puts "Bookings created!"
