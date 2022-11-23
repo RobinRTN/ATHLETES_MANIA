@@ -1,6 +1,6 @@
 <div class="navbar navbar-expand-sm navbar-light navbar-lewagon">
       <div class="container-fluid">
-        <%= link_to "#", class: "navbar-brand p-0 m-0" do %>
+        <%= link_to "/", class: "navbar-brand p-0 m-0" do %>
           <%= image_tag "logo.png", class: "image-logo"%>
         <% end %>
         <div class="form-spacing">
@@ -20,7 +20,11 @@
                 <%= link_to "Messages", "#", class: "nav-link" %>
               </li>
               <li class="nav-item dropdown">
+              <% if current_user %>
+                <%= cl_image_tag current_user.photo.key, class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <% else %>
                 <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <% end %>
                 <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                   <%# <%= link_to "Account", "#", class: "dropdown-item" %>
                   <%= link_to "Dashboard", dashboard_path, class: "dropdown-item" %>
