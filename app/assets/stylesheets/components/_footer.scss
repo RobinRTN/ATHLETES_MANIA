@@ -19,6 +19,9 @@
   color: rgba(82, 89, 94, 0.7);
 }
 
-.container-fluid {
-  padding: 0;
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 2.5rem;
 }
