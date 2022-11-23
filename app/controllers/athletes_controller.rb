@@ -1,4 +1,5 @@
 class AthletesController < ApplicationController
+  skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_athlete, only: [:show, :edit, :update]
 
   def index
@@ -48,5 +49,4 @@ class AthletesController < ApplicationController
   def set_athlete
     @athlete = Athlete.find(params[:id])
   end
-
 end
