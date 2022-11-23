@@ -3,9 +3,9 @@
     <h2>Your bookings:</h2>
       <ul>
         <div class="row">
-          <div class="card">
-            <div class="card-body">
-              <% @bookings.each do |booking| %>
+          <% @bookings.each do |booking| %>
+            <div class="card col-3">
+              <div class="card-body">
                 <h5><li>Athlete: <%= Athlete.find(booking.athlete.id).first_name %> <%= Athlete.find(booking.athlete.id).last_name %></li></h5>
                 <li>Status: <%= booking.status %></li>
                 <li>Booking price: <%= booking.price %></li>
@@ -14,17 +14,17 @@
                 <li>End date: <%= booking.end_date %></li>
               </div>
               <%= link_to "Edit Booking", edit_booking_path(booking), class:"btn btn-booking" %>
-              <% end %>
+              </div>
             </div>
-          </div>
+          <% end %>
         </div>
       </ul>
 
     <h2>Your athletes:</h2>
       <ul>
         <div class="row">
-          <div class="card col-3">
-            <% @athletes.each do |athlete| %>
+          <% @athletes.each do |athlete| %>
+            <div class="card col-3">
               <%= image_tag athlete.photo, class: "card-image"%>
               <div class="card-body">
                 <h5><li>Full name: <%= athlete.first_name %> <%= athlete.last_name %></li></h5>
@@ -34,8 +34,8 @@
                 <li><%= athlete.location %></li>
               <%= link_to "Edit Athlete", edit_athlete_path(athlete), class:"btn btn-booking" %>
               </div>
-            <% end %>
-          </div>
+            </div>
+          <% end %>
         </div>
       </ul>
 </div>
