@@ -4,21 +4,32 @@
       <ul>
         <div class="row">
           <% @bookings.each do |booking| %>
-            <div class="card col-3">
+            <div class="card col-3" style="background-image: <%= Athlete.find(booking.athlete.id).photo %>">
               <div class="card-body">
-                <h5><li>Athlete: <%= Athlete.find(booking.athlete.id).first_name %> <%= Athlete.find(booking.athlete.id).last_name %></li></h5>
+                <h5><li><%= Athlete.find(booking.athlete.id).first_name %> <%= Athlete.find(booking.athlete.id).last_name %></li></h5>
+                <% if booking.end_date < Date.today %>
+                  <% booking.status = "ended" %>
+                <% elsif booking.start_date > Date.today %>
+                  <% booking.status = "not started"%>
+                <% else %>
+                  <% booking.status = "active" %>
+                <% end %>
                 <li>Status: <%= booking.status %></li>
                 <li>Booking price: <%= booking.price %></li>
-              <div class="card-body-dates">
                 <li>Start date: <%= booking.start_date %></li>
                 <li>End date: <%= booking.end_date %></li>
-              </div>
-              <%= link_to "Edit Booking", edit_booking_path(booking), class:"btn btn-booking" %>
+                <%= link_to "Edit Booking", edit_booking_path(booking), class:"btn btn-booking" %>
+                <% if booking.status == "accepted" %>
+                  <%= link_to "Review your booking", new_booking_review_path(booking), class:"btn btn-booking" %>
+                <% else booking.status == "ended" %>
+                  <% link_to "Review your booking", new_booking_review_path(booking), class:"btn btn-booking"%>
+                <% end %>
               </div>
             </div>
           <% end %>
         </div>
       </ul>
+
 
     <h2>Your athletes:</h2>
       <ul>
@@ -27,7 +38,7 @@
             <div class="card col-3">
               <%= image_tag athlete.photo, class: "card-image"%>
               <div class="card-body">
-                <h5><li>Full name: <%= athlete.first_name %> <%= athlete.last_name %></li></h5>
+                <h5><li><%= athlete.first_name %> <%= athlete.last_name %></li></h5>
                 <li><%= athlete.sport %></li>
                 <li><%= athlete.price_per_day %></li>
                 <li><%= athlete.age %></li>
