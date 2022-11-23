@@ -1,0 +1,22 @@
+<div class="container">
+  <h1>Create a review</h1>
+
+  <%= simple_form_for [@booking, @review] do |f| %>
+    <%= f.input :rating %>
+    <%= f.input :content %>
+    <%= f.submit %>
+  <% end %>
+
+  <div class="mt-5 mb-5">
+  <h2>See what others think</h2>
+  <% @reviews.each do |review|%>
+    <div class="review-content">
+      <h5><% review.rating.times do%>
+        <i class="fa-solid fa-star"></i>
+      <% end %>
+      </h5>
+      <p><%= review.content %></p>
+    </div>
+  <% end %>
+  </div>
+</div>

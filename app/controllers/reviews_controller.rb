@@ -5,8 +5,13 @@ class ReviewsController < ApplicationController
   end
 
   def new
+    @booking = Booking.find(params[:booking_id])
+    @athlete = Athlete.find(@booking.athlete_id)
     @review = Review.new
     authorize @review
+
+    @reviews = @athlete.reviews
+    # @athlete.reviews
   end
 
   # add current_user w/ pundit
