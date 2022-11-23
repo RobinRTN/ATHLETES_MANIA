@@ -1,4 +1,4 @@
-class AthletePolicy < ApplicationPolicy
+class ReviewPolicy < ApplicationPolicy
   class Scope < Scope
     # NOTE: Be explicit about which records you allow access to!
     def resolve
@@ -12,17 +12,5 @@ class AthletePolicy < ApplicationPolicy
 
   def create?
     true
-  end
-
-  def show?
-    true
-  end
-
-  def edit?
-    record.user == user
-  end
-
-  def update?
-    record.user == user
   end
 end

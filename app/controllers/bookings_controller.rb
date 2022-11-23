@@ -10,6 +10,8 @@ class BookingsController < ApplicationController
   def create
     @booking = Booking.new(booking_params)
     @booking.user = current_user
+    @booking.athlete = @athlete
+    @booking.status = "pending"
     if @booking.save
       redirect_to athlete_path(@athlete)
     else

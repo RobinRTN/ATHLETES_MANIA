@@ -1,0 +1,12 @@
+<div class="container">
+  <h1>Edit your athlete: <%= @athlete.first_name %> <%= @athlete.last_name %></h1>
+
+  <%= simple_form_for(@athlete) do |f| %>
+    <%= f.input :price_per_day %>
+    <%= f.input :location %>
+    <%= f.input :features %>
+    <%= f.input :summary %>
+    <%= f.input :availability %>
+    <%= f.submit %>
+  <% end %>
+</div>
