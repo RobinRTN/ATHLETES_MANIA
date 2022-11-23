@@ -8,15 +8,15 @@
   <% end %>
 
   <div class="mt-5 mb-5">
-  <h2>See what others think</h2>
-  <% @reviews.each do |review|%>
-    <div class="review-content">
-      <h5><% review.rating.times do%>
-        <i class="fa-solid fa-star"></i>
+    <h1>See what others think</h1>
+      <% @reviews.each do |review|%>
+        <div class="review-content">
+          <h5><% review.rating.times do%>
+            <i class="fa-solid fa-star"></i>
+          <% end %></h5>
+          <i><%= review.created_at.strftime('%Y-%m-%d') %></i>
+          <p><%= review.content %></p>
+        </div>
       <% end %>
-      </h5>
-      <p><%= review.content %></p>
-    </div>
-  <% end %>
   </div>
 </div>
