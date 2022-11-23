@@ -7,6 +7,8 @@ class AthletesController < ApplicationController
 
   def show
     authorize @athlete
+    # authorize @booking
+    @booking = Booking.new(athlete_id: @athlete.id)
   end
 
   def new
