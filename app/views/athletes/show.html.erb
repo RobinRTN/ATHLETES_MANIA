@@ -1,39 +1,61 @@
-<h1>Athletes#show</h1>
-<p>Find me in app/views/athletes/show.html.erb</p>
-
-<%=@athlete.first_name%>
-<%=@athlete.last_name%>
-<%=@athlete.features%>
-
-<%if @athlete.photo.attached?%>
-  <%= cl_image_tag @athlete.photo.key, height: 300, width: 400, crop: :fill %>
-<%else%>
-  <p>No picture attached</p>
-<%end%>
-
-
-
-<% if policy(@athlete).edit? %>
-  <%= link_to "Edit this athlete", edit_athlete_path(@athlete) %> |
-<% end %>
-<% if current_user != @athlete.user %>
-  <h2> Record a new booking </h2>
-  <div data-controller="dynamic-booking-price"
-      data-dynamic-booking-price-price-value="<%= @athlete.price_per_day %>">
-    <%= simple_form_for [@athlete, @booking], html: { data: { controller: 'flatpickr' } } do |f| %>
-      <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: 'startDateInput', dynamic_booking_price_target: 'startDateInput', action: 'change->dynamic-booking-price#updatePrice' } } %>
-      <%= f.input :end_date, as: :string, input_html: { data: { flatpickr_target: 'endDateInput', dynamic_booking_price_target: 'endDateInput', action: 'change->dynamic-booking-price#updatePrice'} } %>
-      <%= f.input :price, as: :hidden, input_html: { data: { dynamic_booking_price_target: 'total' } } %>
-      <%= f.input :duration, as: :hidden, input_html: { data: { dynamic_booking_price_target: 'duration' } } %>
-      <%= f.submit 'Book now', class: 'btn btn-primary' %>
-    <% end %>
-    <div class="booking-price">
-      Total price: <span data-dynamic-booking-price-target="priceHolder"><%= @athlete.price_per_day %></span> €
+<div class="container my-3">
+  <h2 class="text-center mt-5">Here's one of our player, <strong>wanna have fun</strong> with him? 😎</h2>
+<div class="center-the-box d-flex justify-content-center">
+  <div class="card-show my-5 col-8">
+    <div class="details-box my-5">
+      <div class="picture-show">
+        <%if @athlete.photo.attached?%>
+          <%= cl_image_tag @athlete.photo.key, height: 300, width: 400, crop: :fill, class: "show-picture" %>
+        <%else%>
+          <p>No picture attached</p>
+        <%end%>
+      </div>
+      <div class="picture-details mt-3">
+        <p><strong>First Name: </strong><%=@athlete.first_name%></p>
+        <p><strong>Last Name: </strong><%=@athlete.last_name%></p>
+        <p><strong>Age: </strong><%=@athlete.age%></p>
+        <p><strong>Sport: </strong><%=@athlete.sport%></p>
+        <p><strong>Features: </strong><%=@athlete.features%></p>
+        <p><strong>Location: </strong><%=@athlete.location%></p>
+        <p><strong>Summary: </strong><%=@athlete.summary%></p>
+      </div>
     </div>
-  <% end %>
+    <div class="booking-box">
+      <% if policy(@athlete).edit? %>
+        <%= link_to "Edit this athlete", edit_athlete_path(@athlete) %> |
+      <% end %>
+      <% if current_user != @athlete.user %>
+        <h2> Record a new booking </h2>
+        <div data-controller="dynamic-booking-price"
+            data-dynamic-booking-price-price-value="<%= @athlete.price_per_day %>">
+          <%= simple_form_for [@athlete, @booking], html: { data: { controller: 'flatpickr' } } do |f| %>
+            <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: 'startDateInput', dynamic_booking_price_target: 'startDateInput', action: 'change->dynamic-booking-price#updatePrice' } } %>
+            <%= f.input :end_date, as: :string, input_html: { data: { flatpickr_target: 'endDateInput', dynamic_booking_price_target: 'endDateInput', action: 'change->dynamic-booking-price#updatePrice'} } %>
+            <%= f.input :price, as: :hidden, input_html: { data: { dynamic_booking_price_target: 'total' } } %>
+            <%= f.input :duration, as: :hidden, input_html: { data: { dynamic_booking_price_target: 'duration' } } %>
+            <%= f.submit 'Book now', class: 'btn btn-dark my-2' %>
+          <% end %>
+          <div class="booking-price">
+            Total price: <span data-dynamic-booking-price-target="priceHolder"><%= @athlete.price_per_day %></span> €
+          </div>
+        <% end %>
+    </div>
+    <div class="price-box">
+        <p><strong>Price/day: </strong><%=@athlete.price_per_day%>€</p>
+    </div>
+    </div>
+  </div>
 </div>
 
-<%@athlete.reviews.each do |review|%>
-  <%=review.content%>
-  <%=review.rating%>
-<%end%>
+<div class="review-box d-flex justify-content-center mt-3 ">
+  <div class="rev col-8">
+    <h2 class="text-center">Check out his reviews! 👇</h2>
+
+      <%@athlete.reviews.each do |review|%>
+        <%=review.content%>
+        <%=review.rating%>
+      <%end%>
+
+  </div>
+  </div>
+</div>
