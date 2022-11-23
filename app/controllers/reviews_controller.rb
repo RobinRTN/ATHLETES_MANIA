@@ -8,11 +8,10 @@ class ReviewsController < ApplicationController
     @booking = Booking.find(params[:booking_id])
     @athlete = Athlete.find(@booking.athlete_id)
     @review = Review.new
-    @review.booking = @booking
     authorize @review
 
-    @review = policy_scope(Review)
-    @athlete.reviews
+    @reviews = @athlete.reviews
+    # @athlete.reviews
   end
 
   # add current_user w/ pundit
