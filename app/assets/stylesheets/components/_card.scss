@@ -1,3 +1,32 @@
+.row {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.card {
+  display: flex;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  overflow: hidden;
+  padding: 0;
+  margin: 20px;
+  width: 300px;
+}
+
+.card-image {
+  height: 150px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-body {
+  list-style: none;
+}
+
+.card-body h5 li {
+  font-size: 20px;
+}
 
 .card-product {
   overflow: hidden;
@@ -21,6 +50,19 @@
 .card-product h2 {
   font-size: 16px;
   font-weight: bold;
+  margin: 0;
+}
+
+.card-body-dates {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.card-body li {
+  justify-content: space-between;
+  font-size: 12px;
+  opacity: .7;
   margin: 0;
 }
 

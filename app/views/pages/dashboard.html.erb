@@ -1,23 +1,41 @@
-<h1> <%= @user.first_name %>'s DASHBOARD </h1>
-<h2>Your bookings:</h2>
-<ul>
-  <% @bookings.each do |booking| %>
-  <li>Status: <%= booking.status %></li>
-  <li>Athlete: <%= Athlete.find(booking.athlete.id).first_name %> <%= Athlete.find(booking.athlete.id).last_name %></li>
-  <li>Booking price: <%= booking.price %></li>
-  <li>Start date: <%= booking.start_date %></li>
-  <li>End date: <%= booking.end_date %></li>
-  <% end %>
-</ul>
+<div class="container mt-3">
+  <h1> <%= @user.first_name %>'s DASHBOARD </h1>
+    <h2>Your bookings:</h2>
+      <ul>
+        <div class="row">
+          <div class="card">
+            <div class="card-body">
+              <% @bookings.each do |booking| %>
+                <h5><li>Athlete: <%= Athlete.find(booking.athlete.id).first_name %> <%= Athlete.find(booking.athlete.id).last_name %></li></h5>
+                <li>Status: <%= booking.status %></li>
+                <li>Booking price: <%= booking.price %></li>
+              <div class="card-body-dates">
+                <li>Start date: <%= booking.start_date %></li>
+                <li>End date: <%= booking.end_date %></li>
+              </div>
+              <%= link_to "Edit infos", edit_booking_path(booking), class:"btn btn-booking" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </ul>
 
-<h2>Your athletes:</h2>
-<ul>
-  <% @athletes.each do |athlete| %>
-  <li><%= athlete.first_name %></li>
-  <li><%= athlete.last_name %></li>
-  <li><%= athlete.price_per_day %></li>
-  <li><%= athlete.sport %></li>
-  <li><%= athlete.age %></li>
-  <li><%= athlete.location %></li>
-  <% end %>
-</ul>
+    <h2>Your athletes:</h2>
+      <ul>
+        <div class="row">
+          <div class="card col-3">
+            <%= image_tag "logo.png", class: "card-image"%>
+            <div class="card-body">
+              <% @athletes.each do |athlete| %>
+                <h5><li>Full name: <%= athlete.first_name %> <%= athlete.last_name %></li></h5>
+                <li><%= athlete.sport %></li>
+                <li><%= athlete.price_per_day %></li>
+                <li><%= athlete.age %></li>
+                <li><%= athlete.location %></li>
+              <%= link_to "Edit Athlete", edit_athlete_path(athlete), class:"btn btn-booking" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </ul>
+</div>
