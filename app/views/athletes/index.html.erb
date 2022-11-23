@@ -14,7 +14,11 @@
               )">
             </div>
             <div class="card-product-infos">
-              <li> <%= athlete.first_name %></li>
+              <li> <%= athlete.first_name %> <%= athlete.last_name %></li>
+              <li> Age: <%= athlete.age %></li>
+              <li> Location: <%= athlete.location %></li>
+              <li> <%= athlete.features %></li>
+              <li> <%= athlete.price_per_day %>€ per day</li>
             </div>
           </div>
         <% end %>
