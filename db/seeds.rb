@@ -27,6 +27,8 @@ u1 = User.create!(
   phone_number: "0674263819",
   password: "123456",
 )
+  fileu1 = URI.open("https://avatars.githubusercontent.com/u/115102708?v=4")
+  u1.photo.attach(io: fileu1, filename: "u1.jpg", content_type: "image/jpg")
 
 u2 = User.create!(
   id: 2,
@@ -36,6 +38,8 @@ u2 = User.create!(
   phone_number: "0774263819",
   password: "123456",
 )
+  fileu2 = URI.open("https://res.cloudinary.com/wagon/image/upload/c_fill,g_face,h_200,w_200/v1665072255/zfsfmzn9icpxkxusegly.jpg")
+  u2.photo.attach(io: fileu2, filename: "u2.jpg", content_type: "image/jpg")
 
 u3 = User.create!(
   id: 3,
@@ -45,6 +49,8 @@ u3 = User.create!(
   phone_number: "0674263919",
   password: "123456",
 )
+  fileu3 = URI.open("https://avatars.githubusercontent.com/u/113995804?v=4")
+  u3.photo.attach(io: fileu3, filename: "u3.png", content_type: "image/png")
 
 puts "Creating athletes..."
 
@@ -59,7 +65,7 @@ a1 = Athlete.create!(first_name: "Karim",
   user_id: 1,
   gender: "male")
   file1 = URI.open("https://www.topmercato.com/wp-content/uploads/2022/10/Karim-Benzema-Real-Madrid.jpg")
-  a1.photo.attach(io: file1, filename: "nes.png", content_type: "image/png")
+  a1.photo.attach(io: file1, filename: "a1.jpg", content_type: "image/jpg")
 
 a2 = Athlete.create!(first_name: "Lebron",
   last_name: "James",
@@ -72,7 +78,7 @@ a2 = Athlete.create!(first_name: "Lebron",
   user_id: 1,
   gender: "male")
   file2 = URI.open("https://le10static.com/img/cache/article/576x324/0000/0021/216532.webp")
-a2.photo.attach(io: file2, filename: "nes.png", content_type: "image/png")
+a2.photo.attach(io: file2, filename: "a2.jpg", content_type: "image/jpg")
 
 
 a3 = Athlete.create!(first_name: "Kylian",
@@ -86,7 +92,7 @@ a3 = Athlete.create!(first_name: "Kylian",
   user_id: 1,
   gender: "male")
   file3 = URI.open("https://assets-fr.imgfoot.com/media/cache/1200x900/mbappe-maillot.jpg")
-a3.photo.attach(io: file3, filename: "nes.png", content_type: "image/png")
+a3.photo.attach(io: file3, filename: "a3.jpg", content_type: "image/jpg")
 
 a4 = Athlete.create!(first_name: "Kevin",
   last_name: "De Bruyne",
@@ -99,7 +105,7 @@ a4 = Athlete.create!(first_name: "Kevin",
   user_id: 1,
   gender: "male")
   file4 = URI.open("https://images.midilibre.fr/api/v1/images/view/60ae4e30d286c23b8619a368/large/image.jpg?v=2")
-  a4.photo.attach(io: file4, filename: "nes.png", content_type: "image/png")
+  a4.photo.attach(io: file4, filename: "a4.jpg", content_type: "image/jpg")
 
 a5 = Athlete.create!(first_name: "Stephen",
   last_name: "Curry",
@@ -112,7 +118,7 @@ a5 = Athlete.create!(first_name: "Stephen",
   user_id: 1,
   gender: "male")
   file5 = URI.open("https://media.gqmagazine.fr/photos/6322ecfa4461180850bb4e73/16:9/w_2560%2Cc_limit/GettyImages-1403370742.jpg")
-  a5.photo.attach(io: file5, filename: "nes.png", content_type: "image/png")
+  a5.photo.attach(io: file5, filename: "a5.jpg", content_type: "image/jpg")
 
 a6 = Athlete.create!(first_name: "Wendie",
   last_name: "Renard",
@@ -125,7 +131,7 @@ a6 = Athlete.create!(first_name: "Wendie",
   user_id: 1,
   gender: "female")
   file6 = URI.open("https://imgresizer.eurosport.com/unsafe/1200x0/filters:format(jpeg):focal(1446x731:1448x729)/origin-imgresizer.eurosport.com/2021/09/17/3222001-65957288-2560-1440.jpg")
-  a6.photo.attach(io: file6, filename: "nes.png", content_type: "image/png")
+  a6.photo.attach(io: file6, filename: "a6.jpg", content_type: "image/jpg")
 
 a7 = Athlete.create!(first_name: "Caroline",
   last_name: "Garcia",
@@ -138,7 +144,7 @@ a7 = Athlete.create!(first_name: "Caroline",
   user_id: 2,
   gender: "female")
   file7 = URI.open("https://imgresizer.eurosport.com/unsafe/1200x0/filters:format(jpeg):focal(1644x320:1646x318)/origin-imgresizer.eurosport.com/2022/11/06/3485114-71049448-2560-1440.jpg")
-  a7.photo.attach(io: file7, filename: "nes.png", content_type: "image/png")
+  a7.photo.attach(io: file7, filename: "a7.jpg", content_type: "image/jpg")
 
 a8 = Athlete.create!(first_name: "Serena",
   last_name: "Williams",
@@ -151,7 +157,7 @@ a8 = Athlete.create!(first_name: "Serena",
   user_id: 2,
   gender: "female")
   file8 = URI.open("https://cdn-s-www.ledauphine.com/images/2DBFCB2B-8340-4FB7-AE07-128316D85274/MF_contenu/serena-williams-evoque-une-possible-retraite-en-fin-d-annee-1660057934.jpg")
-  a8.photo.attach(io: file8, filename: "nes.png", content_type: "image/png")
+  a8.photo.attach(io: file8, filename: "a8.jpg", content_type: "image/jpg")
 
 a9 = Athlete.create!(first_name: "Novak",
   last_name: "Djokovic",
@@ -164,7 +170,7 @@ a9 = Athlete.create!(first_name: "Novak",
   user_id: 2,
   gender: "male")
   file9 = URI.open("https://upload.wikimedia.org/wikipedia/commons/thumb/7/7a/Novak_Djokovic_Queen%27s_Club_2018.jpg/1200px-Novak_Djokovic_Queen%27s_Club_2018.jpg")
-  a9.photo.attach(io: file9, filename: "nes.png", content_type: "image/png")
+  a9.photo.attach(io: file9, filename: "a9.jpg", content_type: "image/jpg")
 
 a10 = Athlete.create!(first_name: "Max",
   last_name: "Verstappen",
@@ -177,7 +183,7 @@ a10 = Athlete.create!(first_name: "Max",
   user_id: 3,
   gender: "male")
   file10 = URI.open("https://cdn-1.motorsport.com/images/amp/6l9BgGj0/s1000/pole-man-max-verstappen-red-bu.jpg")
-  a10.photo.attach(io: file10, filename: "nes.png", content_type: "image/png")
+  a10.photo.attach(io: file10, filename: "a10.jpg", content_type: "image/jpg")
 
 a11 = Athlete.create!(first_name: "Penelope",
   last_name: "Leprévost",
@@ -190,7 +196,7 @@ a11 = Athlete.create!(first_name: "Penelope",
   user_id: 3,
   gender: "male")
   file11 = URI.open("https://france3-regions.francetvinfo.fr/image/wowBF0agY1QT42uWG35vHDpkfCI/1200x900/regions/2020/06/08/5ede8fee6cc58_penelope_leprevost_prix_hermes_paris_mars_2014.jpg")
-  a11.photo.attach(io: file11, filename: "nes.png", content_type: "image/png")
+  a11.photo.attach(io: file11, filename: "a11.jpg", content_type: "image/jpg")
 
 a12 = Athlete.create!(first_name: "Khabib",
   last_name: "Nurmagomedov",
@@ -203,7 +209,7 @@ a12 = Athlete.create!(first_name: "Khabib",
   user_id: 3,
   gender: "male")
   file12 = URI.open("https://www.parlons-basket.com/wp-content/uploads/2022/09/UFC-Khabib-Nurmagomedov-maigre.jpg")
-  a12.photo.attach(io: file12, filename: "nes.png", content_type: "image/png")
+  a12.photo.attach(io: file12, filename: "a12.jpg", content_type: "image/jpg")
 
 puts "Creating bookings..."
 
@@ -289,13 +295,3 @@ Review.create!(
 )
 
 puts "Finished!"
-
-
-# create_table "reviews", force: :cascade do |t|
-#   t.text "content"
-#   t.integer "rating"
-#   t.bigint "booking_id", null: false
-#   t.datetime "created_at", null: false
-#   t.datetime "updated_at", null: false
-#   t.index ["booking_id"], name: "index_reviews_on_booking_id"
-# end
