@@ -32,3 +32,8 @@
     </div>
   <% end %>
 </div>
+
+<%@athlete.reviews.each do |review|%>
+  <%=review.content%>
+  <%=review.rating%>
+<%end%>
