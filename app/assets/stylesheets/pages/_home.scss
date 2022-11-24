@@ -3,3 +3,48 @@ p{
   padding-left: 30px;
   padding-right: 30px;
 }
+
+.container {
+  margin-top: 5em;
+  color: #3C454B;
+}
+
+.rectangle {
+  width: 100%;
+  height: 4px;
+  border-radius: 5px;
+  margin-top: 6em;
+}
+
+.benefits i {
+  font-size: 70px;
+  color: #FF8080;
+}
+
+.benefits {
+  margin-top: 6em;
+  margin-bottom: 6em;
+}
+
+.reduced {
+  width: 25em;
+  height: auto;
+}
+
+.bottom-button {
+  padding: 16px 100px;
+  text-decoration: none;
+  background-color: #8CFF85;
+  color: black;
+  font-size: 25px;
+  border-radius: 6px;
+  box-shadow: 0 0 14px rgba(0,0,0,0.3);
+  transition: all 0.5s;
+}
+
+.bottom-button:hover {
+  background-color: #33a92d;
+  color: white;
+  box-shadow: 0 0 14px rgba(0,0,0,0.3);
+
+}

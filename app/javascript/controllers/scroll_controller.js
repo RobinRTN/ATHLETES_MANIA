@@ -15,6 +15,7 @@ export default class extends Controller {
       this.element.classList.add("carrousel-shadow-on")
     }
     else {
+      this.element.classList.remove("carrousel-shadow-on")
       this.element.classList.add("carrousel-shadow-off")
     }
   }
