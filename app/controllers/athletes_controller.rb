@@ -3,7 +3,17 @@ class AthletesController < ApplicationController
   before_action :set_athlete, only: [:show, :edit, :update]
 
   def index
-    @athletes = policy_scope(Athlete)
+    if params[:query].present?
+      @athletes = policy_scope(Athlete).search_by_athlete(params[:query])
+    else
+      @athletes = policy_scope(Athlete)
+      @markers = @athletes.geocoded.map do |athlete|
+        {
+          lat: athlete.latitude,
+          lng: athlete.longitude
+        }
+      end
+    end
   end
 
   def show
@@ -28,7 +38,6 @@ class AthletesController < ApplicationController
     end
     authorize @athlete
   end
-
 
   def edit
     authorize @athlete
