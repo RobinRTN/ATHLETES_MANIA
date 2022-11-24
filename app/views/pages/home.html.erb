@@ -1,11 +1,16 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url(https://as2.ftcdn.net/v2/jpg/02/05/42/15/1000_F_205421550_V97HX8CA4wfPSAM0ixHYuGEeDshBvnlH.jpg);">
-  <div class="container">
-    <h1><strong>ATHLETES MANIA</strong></h1>
-    <p>Sports like you've never done before!</p>
-  </div>
+
+<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))">
+    <div class="banner-description">
+      <h1 ><strong>ATHLETES MANIA</strong></h1>
+      <p><em>Sports like never</em></p>
+    </div>
+      <%= link_to 'Our Athletes', athletes_path, class: "banner-button" %>
+    <%= video_tag 'background_video.mp4', muted: :muted, autoplay: :autoplay, loop: :loop, class: "banner-video"  %>
 </div>
-<div class="carrousel" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgb(239, 239, 239))">
-  <h2> <strong>Discover our athletes</strong></h2>
+
+
+<div class="container col-8">
+  <h2 class="text-center my-5"> <strong>The best athletes in all sports for awesome experiences ⚡️</strong></h2>
   <div data-controller="scroll" data-action="scroll@window->scroll#downScroll" id="carrousel">
     <div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="true">
       <div class="carousel-indicators">
@@ -57,15 +62,33 @@
       </button>
     </div>
   </div>
-  <%= link_to 'See all athletes', athletes_path, class: "btn btn-flat btn-dark" %>
 
-  <h2><strong>Description</strong></h2>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer fermentum diam placerat, pulvinar est et, facilisis nulla.
-  Nam auctor, massa in vehicula mollis, turpis nisi hendrerit ipsum, at rutrum ante eros vel lectus. Etiam dignissim, arcu vitae venenatis tempus, neque erat tempus orci, eget scelerisque leo ligula ut elit.
-  Morbi facilisis erat ut ipsum semper, non lobortis arcu bibendum. Vestibulum id purus metus. In hac habitasse platea dictumst. Suspendisse laoreet, lorem at elementum suscipit, lectus ipsum posuere nisi, et vehicula est sem quis ex.
-  Suspendisse gravida consequat risus, quis convallis sem rutrum vel. Integer condimentum urna et est tincidunt, non iaculis tellus laoreet.
-  Proin et justo eget nibh viverra aliquam. Donec imperdiet scelerisque ligula, non faucibus mauris vestibulum non. Etiam commodo laoreet eleifend.
-  Quisque sagittis lectus sit amet aliquam fermentum. Integer libero eros, pharetra sed orci id, fermentum pretium nunc. Phasellus euismod quam vel aliquam lacinia.
-  Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.</p>
+  <div class="rectangle" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))">
+  </div>
+
+  <div class="benefits d-flex justify-content-around">
+    <div class="discover reduced discover me-2 text-center">
+      <i class="fa-solid fa-magnifying-glass"></i>
+      <h4 class="my-4">Find the perfect athlete</h4>
+      <p>Browse through our website, athlete all around the world are available at any time. Basketball? No problem just pay for Lebron James!</p>
+    </div>
+    <div class="dates reduced me-2 text-center">
+      <i class="fa-sharp fa-solid fa-circle-check"></i>
+      <h4 class="my-4">Plan a game or session</h4>
+      <p>Check the athlete availabilities, send a request and you will get a response shortly to confirm the session. There is always a athlete for you</p>
+    </div>
+    <div class="fun reduced text-center">
+      <i class="fa-solid fa-face-laugh-wink"></i>
+      <h4 class="my-4">Enjoy with the best!</h4>
+      <p>Our clients are astonished be how fast you can improve with a pro athlete, in addition it's great fun! Rate your session after</p>
+    </div>
+  </div>
+
+  <div class="rectangle" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4))">
+  </div>
+
+<div class="bottom-button-part d-flex justify-content-around my-5">
+      <%= link_to 'Our Athletes', athletes_path, class: "bottom-button" %>
+</div>
 
 </div>
