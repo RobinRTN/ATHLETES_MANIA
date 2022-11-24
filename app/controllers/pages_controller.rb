@@ -6,16 +6,28 @@ class PagesController < ApplicationController
 
   def dashboard
     @user = current_user
-    bookings_details
-    athletes_details
+    user_bookings_details
+    user_athletes_details
+    user_rentals_details
   end
 
   # deux methodes séparées pour enrichir ultérieurement la methode dashboard sans avoir qqch d'illisible
-  def bookings_details
+  def user_bookings_details
     @bookings = current_user.bookings
   end
 
-  def athletes_details
-    @athletes = current_user.athletes
+  def user_athletes_details
+    @user_athletes = current_user.athletes
+  end
+
+  def user_rentals_details
+    user_athletes = current_user.athletes
+    @user_rentals = []
+    user_athletes.each do |athlete|
+      athlete.bookings.each do |booking|
+        @user_rentals << booking
+      end
+    end
+    return @user_rentals
   end
 end
