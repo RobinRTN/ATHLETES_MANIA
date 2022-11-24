@@ -52,6 +52,29 @@ u3 = User.create!(
   fileu3 = URI.open("https://avatars.githubusercontent.com/u/113995804?v=4")
   u3.photo.attach(io: fileu3, filename: "u3.png", content_type: "image/png")
 
+u4 = User.create!(
+    id: 4,
+    email: "shayneze@gmail.com",
+    first_name: "Shayneze",
+    last_name: "Menegady",
+    phone_number: "0679263919",
+    password: "123456",
+  )
+    fileu4 = URI.open("https://avatars.githubusercontent.com/u/62299446?v=4")
+    u4.photo.attach(io: fileu4, filename: "u4.png", content_type: "image/png")
+
+u5 = User.create!(
+    id: 5,
+    email: "mehdi@gmail.com",
+    first_name: "Mehdi",
+    last_name: "Rachid",
+    phone_number: "0679263934",
+    password: "123456",
+  )
+    fileu5 = URI.open("https://avatars.githubusercontent.com/u/115085959?v=4")
+    u5.photo.attach(io: fileu5, filename: "u5.png", content_type: "image/png")
+
+
 puts "Creating athletes..."
 
 a1 = Athlete.create!(first_name: "Karim",
@@ -206,7 +229,7 @@ a12 = Athlete.create!(first_name: "Khabib",
   summary: "Hard puncher",
   features: "Punch",
   sport: "Boxing",
-  user_id: 3,
+  user_id: 5,
   gender: "male")
   file12 = URI.open("https://www.parlons-basket.com/wp-content/uploads/2022/09/UFC-Khabib-Nurmagomedov-maigre.jpg")
   a12.photo.attach(io: file12, filename: "a12.jpg", content_type: "image/jpg")
@@ -219,7 +242,7 @@ b1 = Booking.create!(
   status: "accepted",
   price: 6000,
   duration: 5,
-  user_id: u1.id,
+  user_id: u4.id,
   athlete_id: a1.id,
 )
 
@@ -239,7 +262,7 @@ b3 = Booking.create!(
   status: "pending",
   price: 4500,
   duration: 3,
-  user_id: u2.id,
+  user_id: u5.id,
   athlete_id: a10.id,
 )
 
@@ -259,7 +282,7 @@ b5 = Booking.create!(
   status: "accepted",
   price: 4500,
   duration: 4,
-  user_id: u3.id,
+  user_id: u1.id,
   athlete_id: a12.id,
 )
 puts "Creating reviews..."
@@ -277,19 +300,19 @@ Review.create!(
 )
 
 Review.create!(
-  content: "Do you know what a red light is?",
+  content: "Do you even know what a red light is?",
   rating: 2,
   booking_id: b3.id,
 )
 
 Review.create!(
-  content: "Fantastic match in my garden ! Sorry for your ankle though, I hope you will recover ! And...hem... yes, would you mind if I keep your rolex? Thanks super DZ",
+  content: "Please, stop running...",
   rating: 4,
   booking_id: b4.id,
 )
 
 Review.create!(
-  content: "Runs too fast if you're disabled. Think about it before booking",
+  content: "Lost my sight, my jaw and the ability to walk. A little bit too nervous. Wouldn't recommend unless you are Eric Zemmour",
   rating: 3,
   booking_id: b5.id,
 )
