@@ -47,6 +47,7 @@ gem "sassc-rails"
 
 gem "pundit"
 
+gem "geocoder"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
@@ -82,3 +83,4 @@ end
 gem "devise"
 gem "dotenv-rails", groups: [:development, :test]
 gem "cloudinary"
+gem "pg_search"

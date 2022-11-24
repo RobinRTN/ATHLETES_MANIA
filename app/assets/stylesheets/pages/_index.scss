@@ -1,2 +1,73 @@
 // Import page-specific CSS files here.
 @import "home";
+
+.container h1 {
+margin-left: 41px;
+}
+.wrapper{
+  display: flex;
+  h1{
+    padding-top: 10px;
+  }
+}
+
+.words{
+  overflow: hidden;
+  height: 100px;
+}
+
+.words p {
+  font-size:42px;
+  display: block;
+  height: 100%;
+  margin-bottom: 0px;
+  animation: spin_words 10s infinite;
+  padding-left: 8px;
+}
+
+@keyframes spin_words {
+  10%{
+    transform: translateY(-112%);
+  }
+  25%{
+    transform: translateY(-100%);
+  }
+  35%{
+    transform: translateY(-212%);
+  }
+  50%{
+    transform: translateY(-200%);
+  }
+  60%{
+    transform: translateY(-312%);
+  }
+  75%{
+    transform: translateY(-300%);
+  }
+  85%{
+    transform: translateY(-412%);
+  }
+  100%{
+    transform: translateY(-400%);
+  }
+}
+
+.text-1 {
+  color: #FF616B;
+}
+
+.text-2 {
+  color: #FFE488;
+}
+
+.text-3 {
+  color:#80C7FF;
+}
+
+.text-4 {
+  color: #8CFF85;
+}
+
+.text-5 {
+  color: #E488FF;
+}

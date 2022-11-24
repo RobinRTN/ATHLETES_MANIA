@@ -1,13 +1,17 @@
 #carrousel {
   width: 800px;
   height: 400px;
-  box-shadow: 0 0 14px rgba(0,0,0,0.3);
   margin: auto;
 }
 
 .carousel-item {
-  width: 800px;
+  width: 100%;
   height: 400px;
+  img {
+    max-width: 100%;
+    height: auto;
+    border: #FF8080 solid 2px;
+  }
 }
 
 .carrousel {
@@ -31,4 +35,15 @@
 
 .carrousel p {
   text-align: justify;
+}
+
+.carrousel-shadow-off {
+  box-shadow: 0 0 14px rgba(0,0,0,0.3);
+  transition : box-shadow 1.5s ease-in-out;
+}
+
+.carrousel-shadow-on {
+  -webkit-box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0,0,0,0);
+  box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0,0,0,0);  display: flex;
+  transition : box-shadow 1.5s ease-in-out;
 }
