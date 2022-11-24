@@ -6,6 +6,18 @@ class BookingPolicy < ApplicationPolicy
     end
   end
 
+  def accept?
+    true
+  end
+
+  def refuse?
+    true
+  end
+
+  def canceled?
+    true
+  end
+
   def new?
     create?
   end

@@ -6,6 +6,10 @@ Rails.application.routes.draw do
   end
   resources :bookings, only: [] do
     resources :reviews, only: [:new, :create]
+    member do
+      patch :accept
+      patch :refuse
+    end
   end
   resources :bookings, only: [:edit, :update]
   get "/dashboard", to: "pages#dashboard"

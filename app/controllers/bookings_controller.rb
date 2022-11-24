@@ -33,6 +33,20 @@ class BookingsController < ApplicationController
     authorize @booking
   end
 
+  def accept
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    @booking.update(status: "accepted")
+    redirect_to dashboard_path
+  end
+
+  def refuse
+    @booking = Booking.find(params[:id])
+    authorize @booking
+    @booking.update(status: "refused")
+    redirect_to dashboard_path
+  end
+
 private
 
   def set_athlete
