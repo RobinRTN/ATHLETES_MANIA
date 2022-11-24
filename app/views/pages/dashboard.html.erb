@@ -17,7 +17,6 @@
                   <li>Booking price: €<%= booking.price %></li>
                   <li>Start date: <%= booking.start_date %></li>
                   <li>End date: <%= booking.end_date %></li>
-                  <%= link_to "Edit Booking", edit_booking_path(booking), class:"btn btn-booking"%>
                   <% if booking.end_date > Date.today %>
                     <% if booking.status == "pending" %>
                       <p style="color: grey">⏳ Waiting for agent confirmation</p>
