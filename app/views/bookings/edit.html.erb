@@ -1,1 +1,20 @@
-<p> View to come 🚧 Stay tuned! 👷 </p>
+<div class="form-edit">
+  <div class="header-form">
+    <h2> Edit this booking - <%= @athlete.first_name %> <%= @athlete.last_name %> </h2>
+  </div>
+  <div data-controller="dynamic-booking-price"
+      data-dynamic-booking-price-price-value="<%= @athlete.price_per_day %>">
+    <%= simple_form_for [@booking], html: { data: { controller: 'flatpickr' } } do |f| %>
+      <%= f.input :start_date, as: :string, input_html: { data: { flatpickr_target: 'startDateInput', dynamic_booking_price_target: 'startDateInput', action: 'change->dynamic-booking-price#updatePrice' } } %>
+      <%= f.input :end_date, as: :string, input_html: { data: { flatpickr_target: 'endDateInput', dynamic_booking_price_target: 'endDateInput', action: 'change->dynamic-booking-price#updatePrice'} } %>
+      <%= f.input :price, as: :hidden, input_html: { data: { dynamic_booking_price_target: 'total' } } %>
+      <%= f.input :duration, as: :hidden, input_html: { data: { dynamic_booking_price_target: 'duration' } } %>
+      <div class="d-grid gap-2">
+        <%= f.submit 'Confirm changes', class: "btn-pink"%>
+      </div>
+    <% end %>
+    <div class="booking-price">
+      <h2>Total price: <span data-dynamic-booking-price-target="priceHolder"><%= @booking.price %></span> €</h2>
+    </div>
+  </div>
+</div>

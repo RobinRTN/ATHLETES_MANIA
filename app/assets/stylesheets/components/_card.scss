@@ -25,15 +25,23 @@
 
 .card-product {
   overflow: hidden;
-  height: 300px;
+  // height: 300px;
   width: 360px;
   background: white;
   box-shadow: 0 0 15px rgba(0,0,0,0.2);
   display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
   flex-direction: column;
   align-items: center;
   margin: 10px;
   border-radius: 5px;
+  transition: 1s;
+}
+
+.card-product:hover {
+  -webkit-box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0,0,0,0);
+  box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0,0,0,0);  display: flex;
 }
 
 .card-product img {
@@ -61,18 +69,6 @@
   flex-wrap: wrap;
 }
 
-.card-product {
-  overflow: hidden;
-  // height: 300px;
-  width: 360px;
-  background: white;
-  box-shadow: 0 0 15px rgba(0,0,0,0.2);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  margin: 10px;
-  border-radius: 5px;
-}
 
 .card-product img {
   height: 300px;
@@ -121,6 +117,7 @@ text-align: center;
 .athletes-list a {
   text-decoration: none!important;
   color: black!important;
+  margin-bottom: 1em;
 }
 
 .card-product-infos h3 {

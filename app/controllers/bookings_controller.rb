@@ -28,8 +28,8 @@ class BookingsController < ApplicationController
 
   def update
     @booking = Booking.find(params[:id])
-    @booking.update
-    redirect_to dashboard_path(dashboard)
+    @booking.update(booking_params)
+    redirect_to dashboard_path(@dashboard)
     authorize @booking
   end
 
