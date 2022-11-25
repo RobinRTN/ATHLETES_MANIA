@@ -14,9 +14,9 @@
 
   <body>
   <div id="content">
-    <% if current_page?(controller: 'pages', action: 'home') %>
+    <% if current_page?(controller: '/pages', action: 'home') %>
       <%= render "shared/navbarhome" %>
-    <% elsif current_page?(controller: 'athletes', action: 'index') %>
+    <% elsif current_page?(controller: '/athletes', action: 'index') %>
       <%= render "shared/navbarindex" %>
     <% else %>
       <%= render "shared/navbar" %>
