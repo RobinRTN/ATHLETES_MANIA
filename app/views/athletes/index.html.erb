@@ -1,4 +1,5 @@
 <div class="container mt-3">
+
   <div class="wrapper">
     <h1>Choose your </h1>
     <div class="words">
@@ -9,6 +10,7 @@
       <p class="text-5"><strong>Friend</strong></p>
     </div>
   </div>
+
   <ul>
     <div class="athletes-list">
       <% @athletes.each do |athlete| %>
@@ -31,12 +33,12 @@
                 <li class="average">
                   <% mean = [] %>
                   <% athlete.reviews.each do |review| %>
-                  <% mean << review.rating %>
+                    <% mean << review.rating %>
                   <% end %>
                   <% unless mean.size == 0 %>
-                  <%= mean.sum / mean.size %> ⭐️
+                    <%= mean.sum / mean.size %> ⭐️
                   <% else %>
-                  No review yet
+                    No review yet
                   <% end %>
                 </li>
             </div>
@@ -44,6 +46,15 @@
         <% end %>
       <% end %>
     </div>
-
   </ul>
+
+  <h1>See where your favorite athletes are located</h1>
+
+  <div class="banner banner-map p-0">
+      <div style="width: 100%; height: 600px;"
+        data-controller="map"
+        data-map-markers-value="<%= @markers.to_json %>"
+        data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+      </div>
+  </div>
 </div>
