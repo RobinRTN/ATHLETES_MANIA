@@ -4,11 +4,11 @@
 
 import { application } from "./application"
 
+import BookingStatusController from "./booking_status_controller"
+application.register("booking-status", BookingStatusController)
+
 import DynamicBookingPriceController from "./dynamic_booking_price_controller"
 application.register("dynamic-booking-price", DynamicBookingPriceController)
-
-import DynamicDurationController from "./dynamic_duration_controller"
-application.register("dynamic-duration", DynamicDurationController)
 
 import FlatpickrController from "./flatpickr_controller"
 application.register("flatpickr", FlatpickrController)
@@ -16,8 +16,14 @@ application.register("flatpickr", FlatpickrController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
+import ToggleController from "./toggle_controller"
+application.register("toggle", ToggleController)
+
 import MapController from "./map_controller"
 application.register("map", MapController)
+
+import NavbarController from "./navbar_controller"
+application.register("navbar", NavbarController)
 
 import ScrollController from "./scroll_controller"
 application.register("scroll", ScrollController)

@@ -1,14 +1,43 @@
-.navbar-lewagon {
+.navbar {
   justify-content: space-between;
-  background: white;
   padding: 10px;
+  position: sticky;
+  top: 0;
+  z-index: 5000;
+  background-color: white;
 }
 
-.navbar-lewagon .navbar-collapse {
+#navbarhome {
+  padding: 13px;
+  margin-bottom: -66px;
+  background-color: rgba(0, 0, 0, 0.0);
+  position: sticky;
+  .nav-link {
+    color: white;
+    opacity: 0.7;
+  }
+}
+
+.navbar .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar .navbar-brand img {
   width: 140px;
   height: 100%;
+}
+
+.navbar-white {
+  background-color: white !important;
+  transition: all 0.5s ease-in-out;
+
+  .nav-link {
+    color: black !important;
+    opacity: 0.7;
+  }
+}
+
+.navbar-white .avatar {
+  -webkit-box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0,0,0,0);
+  box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0,0,0,0);
 }

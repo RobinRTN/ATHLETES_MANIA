@@ -14,7 +14,13 @@
 
   <body>
   <div id="content">
-    <%= render "shared/navbar" %>
+    <% if current_page?(controller: 'pages', action: 'home') %>
+      <%= render "shared/navbarhome" %>
+    <% elsif current_page?(controller: 'athletes', action: 'index') %>
+      <%= render "shared/navbarindex" %>
+    <% else %>
+      <%= render "shared/navbar" %>
+    <% end %>
     <%= yield %>
   </div>
   <%= render "shared/footer"%>
