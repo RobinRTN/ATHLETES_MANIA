@@ -1,41 +1,41 @@
 <div class="container mt-3">
   <div class="title_plus_create d-flex">
-  <h1 id="title-dashboard"> <%= @user.first_name %>'s Dashboard </h1>
-  <div class="btn-athlete-new">
+  <h1 id="title-dashboard" class="my-4"> <%= @user.first_name %>'s Dashboard </h1>
+  <div class="btn-athlete-new mt-4">
     <%= link_to "You have a new champion to add?", new_athlete_path(), class:"btn btn-booking btn-new-champion" %>
   </div>
   </div>
     <div class="bookings-list" data-controller="toggle">
       <div class="d-flex category-title ">
         <div class="div" data-action="click->toggle#hideBookings"><%= link_to "🔽", data: { turbo_method: :patch }%> </div>
-        <h3 id="h3" style="margin-top: 3px, margin-right: 80px"> The stars you recently booked!</h3>
+        <h3 id="h3" style="margin-top: 10px, margin-right: 80px"> The stars you recently booked!</h3>
       </div>
       <div id="bookings-cards" data-toggle-target="bookings">
-        <ul class="p-0">
+        <ul class="">
           <div class="row">
             <% @bookings.each do |booking| %>
               <div class="card col-3" style="background-image: <%= Athlete.find(booking.athlete.id).photo %>">
                 <%= image_tag Athlete.find(booking.athlete.id).photo, class: "card-image"%>
                 <div class="card-body">
                   <h5><li><%= Athlete.find(booking.athlete.id).first_name %> <%= Athlete.find(booking.athlete.id).last_name %></li></h5>
-                  <li>You rent <%= Athlete.find(booking.athlete.id).first_name %> <%= Athlete.find(booking.athlete.id).last_name %> from <%= User.find(Athlete.find(booking.athlete.id).user_id).first_name %> !</li>
+                  <li><strong>You rent <%= Athlete.find(booking.athlete.id).first_name %> <%= Athlete.find(booking.athlete.id).last_name %> from <%= User.find(Athlete.find(booking.athlete.id).user_id).first_name %> !</strong></li>
                   <li>Booking price: €<%= booking.price %></li>
                   <li>Start date: <%= booking.start_date %></li>
                   <li>End date: <%= booking.end_date %></li>
                   <% if booking.end_date > Date.today %>
                     <% if booking.status == "pending" %>
-                      <p style="color: grey">⏳ Waiting for agent confirmation</p>
-                       <%= link_to "Edit Booking", edit_booking_path(booking), class:"btn btn-booking"%>
+                      <p class="left-aligned ps-0 mt-1" style="color: grey">⏳ Waiting for agent confirmation</p>
+                       <%= link_to "Edit Booking", edit_booking_path(booking), class:"btn btn-booking mt-2"%>
                     <% elsif booking.status == "accepted" %>
-                      <p style="color: green">✅ Validated</p>
+                      <p class="left-aligned ps-0 mt-1" style="color: green">👍 Validated</p>
                       <%# <%= link_to "Edit Booking", edit_booking_path(booking), class:"btn btn-booking" %>
-                      <%= link_to refuse_booking_path(booking), data: { turbo_method: :patch } do %>
+                      <%= link_to cancel_booking_path(booking), data: { turbo_method: :patch } do %>
                         <i class="fa-sharp fa-solid fa-trash"></i>
                       <% end %>
                     <% elsif booking.status == "canceled" %>
-                      <p style="color: red">❌ Canceled</p>
+                      <p class="left-aligned ps-0 mt-1" style="color: red">❌ Canceled</p>
                     <% else %>
-                      <p style="color: red">😔 Refused</p>
+                      <p class="left-aligned ps-0 mt-1" style="color: red">😔 Refused</p>
                     <% end %>
                   <% elsif booking.end_date < Date.today %>
                     <%= link_to "Let a review!", new_booking_review_path(booking), class:"btn btn-booking" %>
@@ -59,23 +59,24 @@
               <%= image_tag Athlete.find(rental.athlete_id).photo, class: "card-image"%>
               <div class="card-body">
                 <h5><li><%= Athlete.find(rental.athlete_id).first_name %> <%= Athlete.find(rental.athlete_id).last_name %></li></h5>
-                <li>You rent <%= Athlete.find(rental.athlete_id).first_name %> <%= Athlete.find(rental.athlete_id).last_name %> to <%= User.find(rental.user_id).first_name %> !</li>
+                <li><strong>You rent <%= Athlete.find(rental.athlete_id).first_name %> <%= Athlete.find(rental.athlete_id).last_name %> to <%= User.find(rental.user_id).first_name %> !</strong></li>
                 <li>Status: <%= rental.status %></li>
                 <li>Rental price: €<%= rental.price %></li>
                 <li>Start date: <%= rental.start_date %></li>
                 <li>End date: <%= rental.end_date %></li>
                 <% if rental.status == "pending" %>
-                  <p style="color: grey">⏳ Confirm this request!</p>
-                  <%= link_to "Accept", accept_booking_path(rental), data: { turbo_method: :patch } %>
-                  <%= link_to "Refuse", refuse_booking_path(rental), data: { turbo_method: :patch } %>
+                  <p class="left-aligned ps-0 mt-1" style="color: grey">⏳ Confirm this request!</p>
+                  <%= link_to "✅", accept_booking_path(rental), class: "text-decoration-none me-2", data: { turbo_method: :patch } %>
+                  <%= link_to "❌", refuse_booking_path(rental), class: "text-decoration-none", data: { turbo_method: :patch } %>
                 <% elsif rental.status == "accepted" %>
-                  <p style="color: green">✅ Validated</p>
-                  <%= link_to "Edit Booking", edit_booking_path(rental), class:"btn btn-booking" %>
-                  <%= link_to "Cancel this Booking", refuse_booking_path(rental), data: { turbo_method: :patch }, class:"btn btn-danger" %>
+                  <p class="left-aligned ps-0 mt-1" style="color: green">👍 Validated</p>
+                      <%= link_to cancel_booking_path(rental), data: { turbo_method: :patch } do %>
+                        <i class="fa-sharp fa-solid fa-trash"></i>
+                      <% end %>
                 <% elsif rental.status == "canceled" %>
-                  <p style="color: red">❌ Canceled</p>
+                  <p class="left-aligned ps-0 mt-1" style="color: red">❌ Canceled</p>
                 <% else %>
-                  <p style="color: red">😔 Refused</p>
+                  <p class="left-aligned ps-0 mt-1" style="color: red">😔 Refused</p>
                 <% end %>
               </div>
             </div>
@@ -97,20 +98,28 @@
                 <div class="card-body">
                   <h5><li><%= athlete.first_name %> <%= athlete.last_name %></li></h5>
                   <li><% if athlete.availability %>
-                    <p style="color: green"><%= "✅ Available" %></p>
+                    <p class="left-aligned ps-0 mt-1" style="color: green"><%= "✅ Available" %></p>
                   <% else %>
-                    <p style="color: red"><%= "❌ Unavailable" %></p>
+                    <p class="left-aligned ps-0 mt-1" style="color: red"><%= "❌ Unavailable" %></p>
                   <% end %>
                   </li>
                   <li>Sport: <%= athlete.sport %></li>
                   <li>Rental price: €<%= athlete.price_per_day %> per day</li>
                   <li>Age: <%= athlete.age %> years old</li>
                   <li>Location: <%= athlete.location %></li>
-                <%= link_to "Edit Athlete", edit_athlete_path(athlete), class:"btn btn-booking" %>
+                <%= link_to "Edit Athlete", edit_athlete_path(athlete), class:"btn btn-booking mt-2" %>
                 </div>
               </div>
             <% end %>
           </div>
         </ul>
       </div>
+</div>
+</div>
+
+<div class="footer-links footer-dash">
+    <a href="#"><i class="fab fa-instagram link-style"></i></a>
+    <a href="#"><i class="fab fa-facebook link-style"></i></a>
+    <a href="#"><i class="fab fa-twitter link-style"></i></a>
+    <a href="#"><i class="fab fa-linkedin link-style"></i></a>
 </div>
