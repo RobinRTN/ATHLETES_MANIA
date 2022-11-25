@@ -22,7 +22,6 @@ class AthletesController < ApplicationController
 
   def show
     authorize @athlete
-    # authorize @booking
     @reviews = @athlete.reviews
     @booking = Booking.new(athlete_id: @athlete.id)
   end
