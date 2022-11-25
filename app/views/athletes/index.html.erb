@@ -1,40 +1,51 @@
 <div class="container mt-3">
   <h1>Athletes</h1>
-  <ul>
-    <div class="athletes-list">
-      <% @athletes.each do |athlete| %>
-        <%= link_to athlete_path(athlete) do %>
-          <div class="card-product">
-            <div style="width: 360px; height: 300px; background-size: cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(
-              <% if athlete.photo.attached? %>
-                <%= cl_image_path athlete.photo.key, crop: :fill %>
-              <% else %>
-                'https://img.freepik.com/photos-gratuite/outils-sport_53876-138077.jpg?w=2000'
-              <% end%>
-              )">
+    <ul>
+      <div class="athletes-list">
+        <% @athletes.each do |athlete| %>
+          <%= link_to athlete_path(athlete) do %>
+            <div class="card-product">
+              <div style="width: 360px; height: 300px; background-size: cover; background-position: center; background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(
+                <% if athlete.photo.attached? %>
+                  <%= cl_image_path athlete.photo.key, crop: :fill %>
+                <% else %>
+                  'https://img.freepik.com/photos-gratuite/outils-sport_53876-138077.jpg?w=2000'
+                <% end%>
+                )">
+              </div>
+              <div class="card-product-infos">
+                <h3> <%= athlete.first_name %> <%= athlete.last_name %></h3>
+                <li> Age: <%= athlete.age %></li>
+                <li> Location: <%= athlete.location %></li>
+                <li> <%= athlete.features %></li>
+                <h2> <%= athlete.price_per_day %>€/day</h2>
+                  <li class="average">
+                    <% mean = [] %>
+                    <% athlete.reviews.each do |review| %>
+                    <% mean << review.rating %>
+                    <% end %>
+                    <% unless mean.size == 0 %>
+                    <%= mean.sum / mean.size %> ⭐️
+                    <% else %>
+                    No review yet
+                    <% end %>
+                  </li>
+              </div>
             </div>
-            <div class="card-product-infos">
-              <h3> <%= athlete.first_name %> <%= athlete.last_name %></h3>
-              <li> Age: <%= athlete.age %></li>
-              <li> Location: <%= athlete.location %></li>
-              <li> <%= athlete.features %></li>
-              <h2> <%= athlete.price_per_day %>€/day</h2>
-                <li class="average">
-                  <% mean = [] %>
-                  <% athlete.reviews.each do |review| %>
-                  <% mean << review.rating %>
-                  <% end %>
-                  <% unless mean.size == 0 %>
-                  <%= mean.sum / mean.size %> ⭐️
-                  <% else %>
-                  No review yet
-                  <% end %>
-                </li>
-            </div>
-          </div>
+          <% end %>
         <% end %>
-      <% end %>
-    </div>
+      </div>
+    </ul>
+</div>
 
-  </ul>
+<div class="container mt-3">
+  <h1>See where your favorite athletes are located</h1>
+</div>
+
+<div class="banner banner-map p-0">
+    <div style="width: 100%; height: 600px;"
+      data-controller="map"
+      data-map-markers-value="<%= @markers.to_json %>"
+      data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+    </div>
 </div>

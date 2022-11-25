@@ -2,17 +2,21 @@ class AthletesController < ApplicationController
   skip_before_action :authenticate_user!, only: [:index, :show]
   before_action :set_athlete, only: [:show, :edit, :update]
 
+  include CloudinaryHelper
+
   def index
     if params[:query].present?
       @athletes = policy_scope(Athlete).search_by_athlete(params[:query])
     else
       @athletes = policy_scope(Athlete)
-      @markers = @athletes.geocoded.map do |athlete|
-        {
-          lat: athlete.latitude,
-          lng: athlete.longitude
-        }
-      end
+    end
+    @markers = @athletes.geocoded.map do |athlete|
+      {
+        lat: athlete.latitude,
+        lng: athlete.longitude,
+        id: athlete.id,
+        image_url: cl_image_path(athlete.photo.key)
+      }
     end
   end
 
