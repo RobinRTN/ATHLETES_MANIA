@@ -36,7 +36,7 @@ class AthletesController < ApplicationController
     @athlete.user = current_user
     @athlete.save
     if @athlete.save
-      redirect_to athlete_path(@athlete)
+      redirect_to dashboard_path(@athlete)
     else
       render :new, status: :unprocessable_entity
     end
@@ -50,7 +50,7 @@ class AthletesController < ApplicationController
   def update
     authorize @athlete
     @athlete.update(athlete_params)
-    redirect_to athlete_path(@athlete)
+    redirect_to dashboard_path(@athlete)
   end
 
   private
