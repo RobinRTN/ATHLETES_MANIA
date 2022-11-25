@@ -53,10 +53,10 @@ export default class extends Controller {
 
   #redirectToAthlete() {
     const marker = document.querySelectorAll('.marker.mapboxgl-marker.mapboxgl-marker-anchor-center')
-    const id = marker.id
+    const address = document.URL.split('?')[0]
     marker.forEach((div) => {
       div.addEventListener('click', (event) => {
-      window.open(`http://localhost:3000/athletes/${div.id}`);
+      window.open(`${address}/${div.id}`);
     });
   });
 }}
