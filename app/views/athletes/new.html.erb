@@ -1,5 +1,7 @@
-<div class="container">
-  <h1>Your new athlete</h1>
+<div class="container form-edit">
+  <div class="header-form">
+    <h2> Your new athlete </h2>
+  </div>
 
   <%= simple_form_for(@athlete) do |f| %>
     <%= f.input :first_name %>
@@ -13,6 +15,8 @@
     <%= f.input :availability %>
     <%= f.input :gender %>
     <%= f.input :photo, as: :file %>
-    <%= f.submit %>
+    <div class="d-grid gap-2">
+      <%= f.submit 'Create athlete', class: "btn-pink"%>
+    </div>
   <% end %>
 </div>
