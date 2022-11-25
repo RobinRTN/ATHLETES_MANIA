@@ -24,6 +24,8 @@
     <% end %>
     <%= yield %>
   </div>
-  <%= render "shared/footer"%>
+  <% unless current_page?(controller: '/pages', action: 'dashboard') %>
+    <%= render "shared/footer"%>
+  <% end %>
   </body>
 </html>
