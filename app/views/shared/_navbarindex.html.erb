@@ -4,6 +4,16 @@
       <%= image_tag "logo.png", class: "image-logo"%>
     <% end %>
 
+    <div class="form-spacing">
+      <%= form_with url: athletes_path, method: :get, class: "form-home" do %>
+        <%= text_field_tag :query,
+          params[:query],
+          class: "form-input",
+          placeholder: "Find your Athlete"%>
+        <%= submit_tag "Search", class: "btn-home"%>
+      <% end %>
+    </div>
+
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>

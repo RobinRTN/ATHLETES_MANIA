@@ -31,13 +31,27 @@
 
 .price-box {
   position:absolute;
-  right: 0px;
+  right: 420px;
   margin: 10px;
-  bottom: 0px;
-  border: solid 1px #C96480;
-  border-radius: 50%;
-  padding: 10px 0px 0px 0px ;
-  color: white;
-  background-color: #C96480;
-  box-shadow: 0px 4px 4px gray;
+  bottom: 46px;
+  border-radius: 5%;
+  padding: 10px;
+  color: black;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2) ;
+  p {
+  padding-right: 0px;
+  }
+}
+.booking-box {
+height: 89%;
+}
+
+
+.booking-box h2 {
+  margin-left: 0;
+}
+
+.booking-price {
+  font-size: 2rem;
+  color: #3C454B;
 }
