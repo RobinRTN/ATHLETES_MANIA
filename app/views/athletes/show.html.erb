@@ -1,59 +1,67 @@
-<div class="container my-3">
-  <h2 class="text-center mt-5">Here's one of our player, <strong>wanna have fun 😎</strong></h2>
-  <div class="center-the-box d-flex justify-content-center">
-    <div class="card-show my-5 col-8">
-      <div class="details-box my-5">
-        <div class="picture-show">
-          <%if @athlete.photo.attached?%>
-            <%= cl_image_tag @athlete.photo.key, height: 300, width: 400, crop: :fill, class: "show-picture" %>
-          <%else%>
-            <p>No picture attached</p>
-          <%end%>
-        </div>
-        <div class="picture-details mt-3">
-          <p><strong>First Name: </strong><%=@athlete.first_name%></p>
-          <p><strong>Last Name: </strong><%=@athlete.last_name%></p>
-          <p><strong>Age: </strong><%=@athlete.age%></p>
-          <p><strong>Sport: </strong><%=@athlete.sport%></p>
-          <p><strong>Features: </strong><%=@athlete.features%></p>
-          <p><strong>Location: </strong><%=@athlete.location%></p>
-          <p><strong>Summary: </strong><%=@athlete.summary%></p>
-        </div>
-      </div>
-      <div class="booking-box">
-        <% if policy(@athlete).edit? %>
-          <%= link_to "Edit this athlete", edit_athlete_path(@athlete) %> |
-        <% end %>
-        <% if current_user != @athlete.user %>
-          <h2> Book <%= @athlete.first_name%> <%= @athlete.last_name %> </h2>
-          <div data-controller="dynamic-booking-price"
-              data-dynamic-booking-price-price-value="<%= @athlete.price_per_day %>">
-            <%= simple_form_for [@athlete, @booking], html: { data: { controller: 'flatpickr' } } do |f| %>
-              <%= f.input :start_date, :label => 'From', as: :string, input_html: { data: { flatpickr_target: 'startDateInput', dynamic_booking_price_target: 'startDateInput', action: 'change->dynamic-booking-price#updatePrice' } } %>
-              <%= f.input :end_date, :label => 'To', as: :string, input_html: { data: { flatpickr_target: 'endDateInput', dynamic_booking_price_target: 'endDateInput', action: 'change->dynamic-booking-price#updatePrice'} } %>
-              <%= f.input :price, as: :hidden, input_html: { data: { dynamic_booking_price_target: 'total' } } %>
-              <%= f.input :duration, as: :hidden, input_html: { data: { dynamic_booking_price_target: 'duration' } } %>
-              <%= f.submit 'Book now', class: 'btn btn-dark my-2 btn-book' %>
-            <% end %>
-            <div class="booking-price">
-              <h2>Total price: <span data-dynamic-booking-price-target="priceHolder">  <%=  @athlete.price_per_day %></span> €</h2>
-            </div>
+<div class="back">
+  <%= link_to "< Back to athletes", athletes_path(), class:"back-button" %>
+</div>
+  <div class="container my-3">
+    <% if policy(@athlete).edit? %>
+      <h2 class="text-center mt-5"><strong><%= @athlete.first_name %> </strong> is your athlete 😎</h2>
+    <% else %>
+      <h2 class="text-center mt-5">Here's one of our player, <strong>wanna have fun 😎</strong></h2>
+    <% end %>
+    <div class="center-the-box d-flex justify-content-center">
+      <div class="card-show my-5 col-8">
+        <div class="details-box my-5">
+          <div class="picture-show">
+            <%if @athlete.photo.attached?%>
+              <%= cl_image_tag @athlete.photo.key, height: 300, width: 400, crop: :fill, class: "show-picture" %>
+            <%else%>
+              <p>No picture attached</p>
+            <%end%>
           </div>
-        <% end %>
-      </div>
-      <div class="price-box">
-          <p><%=@athlete.price_per_day%>€/day</p>
+          <div class="picture-details mt-3">
+            <p><strong>First Name: </strong><%=@athlete.first_name%></p>
+            <p><strong>Last Name: </strong><%=@athlete.last_name%></p>
+            <p><strong>Age: </strong><%=@athlete.age%></p>
+            <p><strong>Sport: </strong><%=@athlete.sport%></p>
+            <p><strong>Features: </strong><%=@athlete.features%></p>
+            <p><strong>Location: </strong><%=@athlete.location%></p>
+            <p><strong>Summary: </strong><%=@athlete.summary%></p>
+          </div>
+        </div>
+        <div class="booking-box">
+          <% if policy(@athlete).edit? %>
+            <%= link_to "Edit this athlete", edit_athlete_path(@athlete), class:"btn-edit" %>
+          <% end %>
+          <% if current_user != @athlete.user %>
+            <h2> Book <%= @athlete.first_name%> <%= @athlete.last_name %> </h2>
+            <div data-controller="dynamic-booking-price"
+                data-dynamic-booking-price-price-value="<%= @athlete.price_per_day %>">
+              <%= simple_form_for [@athlete, @booking], html: { data: { controller: 'flatpickr' } } do |f| %>
+                <%= f.input :start_date, :label => 'From', as: :string, input_html: { data: { flatpickr_target: 'startDateInput', dynamic_booking_price_target: 'startDateInput', action: 'change->dynamic-booking-price#updatePrice' } } %>
+                <%= f.input :end_date, :label => 'To', as: :string, input_html: { data: { flatpickr_target: 'endDateInput', dynamic_booking_price_target: 'endDateInput', action: 'change->dynamic-booking-price#updatePrice'} } %>
+                <%= f.input :price, as: :hidden, input_html: { data: { dynamic_booking_price_target: 'total' } } %>
+                <%= f.input :duration, as: :hidden, input_html: { data: { dynamic_booking_price_target: 'duration' } } %>
+                <%= f.submit 'Book now', class: 'btn btn-dark my-2 btn-book' %>
+              <% end %>
+              <div class="booking-price">
+                <h2>Total price: <span data-dynamic-booking-price-target="priceHolder">  <%=  @athlete.price_per_day %></span> €</h2>
+              </div>
+            </div>
+          <% end %>
+        </div>
+        <div class="price-box">
+            <p><%=@athlete.price_per_day%>€/day</p>
+        </div>
       </div>
     </div>
   </div>
-</div>
 
 <div class="review-box d-flex justify-content-center mt-3 ">
   <div class="rev col-8">
     <% render "shared/reviews", reviews: @reviews %>
 
       <div class="containermt-5 mb-5">
-        <h3>See what others think</h3>
+        <% unless @reviews.length == 0 %>
+          <h3>See what others think</h3>
           <% @reviews.each do |review|%>
             <div class="review-content">
               <h5><% review.rating.times do%>
@@ -63,6 +71,7 @@
               <p><%= review.content %></p>
             </div>
           <% end %>
+        <% end %>
       </div>
   </div>
 </div>

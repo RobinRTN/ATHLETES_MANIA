@@ -48,3 +48,20 @@ p{
   -webkit-box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0,0,0,0);
   box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0,0,0,0);  display: flex;
 }
+
+.back-button {
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.5s;
+  color:#3C454B;
+  padding: 5px, 10px;
+}
+
+.back-button:hover {
+  color: #FF8080;
+}
+
+.back {
+  margin-left: 20px;
+  margin-top: 15px;
+}
