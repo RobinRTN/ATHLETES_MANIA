@@ -7,6 +7,11 @@
   padding: 0;
   margin: 20px;
   width: 300px;
+  transition: 1s;
+}
+.card:hover {
+  -webkit-box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0,0,0,0);
+  box-shadow: 5px 5px 15px 5px #FF8080, -9px 5px 15px 5px #FFE488, -7px -5px 15px 5px #8CFF85, 12px -5px 15px 5px #80C7FF, 12px 10px 15px 7px #E488FF, -10px 10px 15px 7px #FF616B, -10px -7px 27px 1px #8E5CFF, 5px 5px 15px 5px rgba(0,0,0,0);  display: flex;
 }
 
 .card-image {
@@ -141,4 +146,20 @@ li {
 
 .fa-sharp {
   color: red;
+}
+
+.btn-athlete-new {
+  width: 250px;
+}
+
+.title_plus_create {
+  justify-content: space-between;
+}
+
+#title-dashboard {
+  margin: 0px;
+}
+
+#h3 {
+  margin-left: 10px;
 }
