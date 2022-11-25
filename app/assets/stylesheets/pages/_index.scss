@@ -1,13 +1,14 @@
 // Import page-specific CSS files here.
 @import "home";
 
-.container h1 {
-margin-left: 41px;
+.container {
+
 }
 .wrapper{
   display: flex;
   h1{
     padding-top: 10px;
+    margin-left: 8px;
   }
 }
 
@@ -23,6 +24,16 @@ margin-left: 41px;
   margin-bottom: 0px;
   animation: spin_words 10s infinite;
   padding-left: 8px;
+}
+
+.second-title-margin {
+  margin-left: 8px;
+}
+
+.banner-map {
+  margin-left: 8px;
+  margin-right: 8px;
+
 }
 
 @keyframes spin_words {

@@ -1,4 +1,4 @@
-<div class="container mt-3">
+<div class="container mt-3 col-10">
 
   <div class="wrapper">
     <h1>Choose your </h1>
@@ -11,7 +11,7 @@
     </div>
   </div>
 
-  <ul>
+  <ul class="p-0">
     <div class="athletes-list">
       <% @athletes.each do |athlete| %>
         <%= link_to athlete_path(athlete) do %>
@@ -48,9 +48,9 @@
     </div>
   </ul>
 
-  <h1>See where your favorite athletes are located</h1>
+  <h1 class="mt-5 second-title-margin">See where your favorite athletes are located 🌍</h1>
 
-  <div class="banner banner-map p-0">
+  <div class="banner banner-map p-0 my-4">
       <div style="width: 100%; height: 600px;"
         data-controller="map"
         data-map-markers-value="<%= @markers.to_json %>"
