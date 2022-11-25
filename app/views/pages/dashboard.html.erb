@@ -5,7 +5,7 @@
         <h3 style="margin-top: 3px, margin-right: 80px">📆 The stars you recently booked!</h3>
         <div class="div" data-action="click->toggle#hideBookings"><%= link_to "🔽", data: { turbo_method: :patch }%> </div>
       </div>
-      <div class="d-none" id="bookings-cards" data-toggle-target="bookings">
+      <div id="bookings-cards" data-toggle-target="bookings">
         <ul>
           <div class="row">
             <% @bookings.each do |booking| %>
@@ -17,14 +17,16 @@
                   <li>Booking price: €<%= booking.price %></li>
                   <li>Start date: <%= booking.start_date %></li>
                   <li>End date: <%= booking.end_date %></li>
-                  <%= link_to "Edit Booking", edit_booking_path(booking), class:"btn btn-booking"%>
                   <% if booking.end_date > Date.today %>
                     <% if booking.status == "pending" %>
                       <p style="color: grey">⏳ Waiting for agent confirmation</p>
+                       <%= link_to "Edit Booking", edit_booking_path(booking), class:"btn btn-booking"%>
                     <% elsif booking.status == "accepted" %>
                       <p style="color: green">✅ Validated</p>
-                      <%= link_to "Edit Booking", edit_booking_path(booking), class:"btn btn-booking" %>
-                      <%= link_to "Cancel this Booking", refuse_booking_path(booking), data: { turbo_method: :patch }, class:"btn btn-danger" %>
+                      <%# <%= link_to "Edit Booking", edit_booking_path(booking), class:"btn btn-booking" %>
+                      <%= link_to refuse_booking_path(booking), data: { turbo_method: :patch } do %>
+                        <i class="fa-sharp fa-solid fa-trash"></i>
+                      <% end %>
                     <% elsif booking.status == "canceled" %>
                       <p style="color: red">❌ Canceled</p>
                     <% else %>
@@ -44,7 +46,7 @@
     <h3>🤑 People have booked your champions!</h3>
     <div class="div" data-action="click->toggle#hideRentals"><%= link_to "🔽", data: { turbo_method: :patch }%> </div>
   </div>
-  <div class="d-none" id="rentals-cards" data-toggle-target="rentals">
+  <div id="rentals-cards" data-toggle-target="rentals">
       <ul>
         <div class="row">
           <% @user_rentals.each do |rental| %>
@@ -81,7 +83,7 @@
     <h3>✨ All your champions</h3>
     <div class="div" data-action="click->toggle#hideCollection"><%= link_to "🔽", data: { turbo_method: :patch }%> </div>
   </div>
-      <div class="d-none" id="athletes-list" data-toggle-target="collection">
+      <div id="athletes-list" data-toggle-target="collection">
         <ul>
           <div class="row">
             <% @user_athletes.each do |athlete| %>
