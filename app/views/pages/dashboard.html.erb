@@ -1,12 +1,17 @@
 <div class="container mt-3">
-  <h1> <%= @user.first_name %>'s Dashboard </h1>
+  <div class="title_plus_create d-flex">
+  <h1 id="title-dashboard"> <%= @user.first_name %>'s Dashboard </h1>
+  <div class="btn-athlete-new">
+    <%= link_to "You have a new champion to add?", new_athlete_path(), class:"btn btn-booking btn-new-champion" %>
+  </div>
+  </div>
     <div class="bookings-list" data-controller="toggle">
-      <div class="d-flex category-title">
-        <h3 style="margin-top: 3px, margin-right: 80px">📆 The stars you recently booked!</h3>
+      <div class="d-flex category-title ">
         <div class="div" data-action="click->toggle#hideBookings"><%= link_to "🔽", data: { turbo_method: :patch }%> </div>
+        <h3 id="h3" style="margin-top: 3px, margin-right: 80px"> The stars you recently booked!</h3>
       </div>
       <div id="bookings-cards" data-toggle-target="bookings">
-        <ul>
+        <ul class="p-0">
           <div class="row">
             <% @bookings.each do |booking| %>
               <div class="card col-3" style="background-image: <%= Athlete.find(booking.athlete.id).photo %>">
@@ -43,8 +48,8 @@
       </div>
 
   <div class="d-flex category-title">
-    <h3>🤑 People have booked your champions!</h3>
     <div class="div" data-action="click->toggle#hideRentals"><%= link_to "🔽", data: { turbo_method: :patch }%> </div>
+    <h3 id="h3">People have booked your champions!</h3>
   </div>
   <div id="rentals-cards" data-toggle-target="rentals">
       <ul>
@@ -80,8 +85,8 @@
     </div>
 
   <div class="d-flex category-title">
-    <h3>✨ All your champions</h3>
     <div class="div" data-action="click->toggle#hideCollection"><%= link_to "🔽", data: { turbo_method: :patch }%> </div>
+    <h3 id="h3">All your champions</h3>
   </div>
       <div id="athletes-list" data-toggle-target="collection">
         <ul>
@@ -107,6 +112,5 @@
             <% end %>
           </div>
         </ul>
-        <%= link_to "You have a new champion to add?", new_athlete_path(), class:"btn btn-booking" %>
       </div>
 </div>
