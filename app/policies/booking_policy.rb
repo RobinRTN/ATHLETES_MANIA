@@ -14,7 +14,7 @@ class BookingPolicy < ApplicationPolicy
     true
   end
 
-  def canceled?
+  def cancel?
     true
   end
 
