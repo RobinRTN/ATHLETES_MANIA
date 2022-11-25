@@ -15,7 +15,7 @@ class BookingsController < ApplicationController
     @booking.status = "pending"
     authorize @booking
     if @booking.save
-      redirect_to athletes_path
+      redirect_to dashboard_path
     else
       render "athlete/:id", status: :unprocessable_entity
     end
